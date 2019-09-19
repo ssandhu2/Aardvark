@@ -7,3 +7,20 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
+### Instructions to Deploy
+1. Clone this repository
+```
+git clone 
+```
+2. Navigate into application folder
+```
+cd csc648-fall2019-Team01/application
+```
+3. Initialize the server
+```
+npm install
+```
+4. Start the server
+```
+npm start
+```
