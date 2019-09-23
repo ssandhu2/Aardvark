@@ -15,8 +15,12 @@ router.get("/",function(req,res){
 router.get("/about",function(req,res){
   res.sendFile(path + "about.html");
 });
-router.get("/aboutAllan",function(req,res){
-  res.sendFile(path + "aboutAllan.html");
+router.get("/aboutAlan",function(req,res){
+  res.sendFile(path + "aboutAlan.html");
+  
+});
+router.get("/alanjpg", function (req, res) {
+  res.sendFile(path + "images/alan.jpg");
 });
 router.get("/aboutDaisy",function(req,res){
   res.sendFile(path + "aboutDaisy.html");
