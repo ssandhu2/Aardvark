@@ -7,8 +7,8 @@
 
 # Blow is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. Server URL or IP
-2. SSH username
+1. Server URL or IP: 3.19.255.197
+2. SSH username: 
 3. SSH password or key.
     <br> If a ssh key is used please upload the key to the credentials folder.
 4. Database URL or IP and port used.
@@ -18,7 +18,8 @@
 7. Database name (basically the name that contains all your tables)
 8. Instructions on how to use the above information.
 
-# Most important things to Remember
-## These values need to kept update to date throughout the semester. <br>
-## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
-## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
+## Directions to SSH
+
+1. Go to the directory where your key is stored
+2. chmod 400 BuySell.pem
+3. ssh -i "BuySell.pem" ubuntu@ec2-3-19-255-197.us-east-2.compute.amazonaws.com
