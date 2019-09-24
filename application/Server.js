@@ -12,22 +12,66 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
+router.get('/style', function(req, res) {
+  res.sendFile(path + 'style.css');
+});
+
 router.get("/about",function(req,res){
   res.sendFile(path + "about.html");
 });
+//Alan's
 router.get("/aboutAlan",function(req,res){
   res.sendFile(path + "aboutAlan.html");
-  
 });
 router.get("/alanjpg", function (req, res) {
   res.sendFile(path + "images/alan.jpg");
 });
+//Daisy's
 router.get("/aboutDaisy",function(req,res){
   res.sendFile(path + "aboutDaisy.html");
 });
+router.get("/daisypng", function (req, res) {
+  res.sendFile(path + "images/daisy.png");
+});
+//Jon's
 router.get("/aboutJonathan",function(req,res){
   res.sendFile(path + "aboutJonathan.html");
 });
+router.get("/BigJonjpg", function (req, res) {
+  res.sendFile(path + "images/BigJon.jpg");
+});
+//Russell's
+router.get("/aboutRussell", function (req, res) {
+  res.sendFile(path + "aboutRussell.html");
+});
+router.get("/russelljpg", function (req, res) {
+  res.sendFile(path + "images/russell.jpg");
+});
+//Ida's
+router.get("/aboutIda", function (req, res) {
+  res.sendFile(path + "aboutIda.html");
+});
+router.get("/idajpg", function (req, res) {
+  res.sendFile(path + "images/Ida.jpg");
+});
+//Sunny's
+router.get("/aboutSunminder", function (req, res) {
+  res.sendFile(path + "aboutSunminder.html");
+});
+router.get("/sunminderjpg", function (req, res) {
+  res.sendFile(path + "images/sunminder.jpg");
+});
+//Ryan's
+router.get("/aboutRyan", function (req, res) {
+  res.sendFile(path + "aboutRyan.html");
+});
+router.get("/ryanjpg", function (req, res) {
+  res.sendFile(path + "images/ryan.jpg");
+});
+router.get("/template", function (req, res) {
+  res.sendFile(path + "template.html");
+});
+
 router.get("/contact",function(req,res){
   res.sendFile(path + "contact.html");
 });
