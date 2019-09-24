@@ -68,6 +68,9 @@ router.get("/aboutRyan", function (req, res) {
 router.get("/ryanjpg", function (req, res) {
   res.sendFile(path + "images/r.jpg");
 });
+router.get("/template", function (req, res) {
+  res.sendFile(path + "template.html");
+});
 
 router.get("/contact",function(req,res){
   res.sendFile(path + "contact.html");
