@@ -1,5 +1,6 @@
 body{
     background-color: white;
+    margin-top: 200px;
 }
 h3{
     margin-left: 375px;
@@ -36,7 +37,12 @@ hr.style-one {
 
 }
 
-
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
 
 .entry{
     float: left;
