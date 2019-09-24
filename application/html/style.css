@@ -6,7 +6,7 @@ h3{
     font-family: 'Cardo', serif;
 }
 h4{
-    margin-left: 385px;
+    margin-left: 375px;
     font-family: 'Cardo', serif;
 }
 
@@ -16,6 +16,7 @@ img.align-left {
   margin: 200px auto;
   margin-left: 300px;
   margin-top: 0px;
+  margin-bottom: 20px;
 
  
 } 
@@ -23,6 +24,7 @@ img.medium {
  
   width: 300px;
   height: 300px;
+  
 
 }
 hr.style-one {
@@ -31,6 +33,7 @@ hr.style-one {
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
     margin-left: 300px;
+  
 
 }
 .entry{
