@@ -33,14 +33,18 @@ hr.style-one {
     background: #333;
     background-image: linear-gradient(to right, #ccc, #333, #ccc);
     margin-left: 300px;
-  
 
 }
+
+
+
 .entry{
     float: left;
     margin-left: auto;
     margin-right: auto; 
+    font-family: 'Cardo', serif;
 }
+
 
 #about{
     font-family: 'Cardo', serif;
@@ -51,7 +55,7 @@ hr.style-one {
     padding: 20px;
     margin-top: 200px;
     margin-left: 800px;
-   
+
   
 }
 
