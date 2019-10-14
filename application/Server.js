@@ -1,6 +1,8 @@
-var express = require("express");
-var app = express();
-var router = express.Router();
+const express = require("express");
+const mysql = require("mysql");
+
+const app = express();
+const router = express.Router();
 var path = __dirname + '/html/';
 
 router.use(function (req,res,next) {
