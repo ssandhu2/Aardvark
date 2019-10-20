@@ -30,7 +30,12 @@ router.get('/style', function(req, res) {
 */
 
 app.use("/",function(req,res){
-  res.render("index.html");
+  res.render("index");
+});
+
+//trying to route it to search-results.ejs
+app.use("/searchResults",function(req,res){
+  res.render("search-results");
 });
 
 app.use("/template",function(req,res){
