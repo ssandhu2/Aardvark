@@ -1,87 +1,49 @@
 const express = require("express");
-const mysql = require("mysql");
+const about_routes = require('./routes/aboutRoutes');
 
 const app = express();
 const router = express.Router();
 var path = __dirname + '/html/';
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+
+// allows to call static items in pulic folder such as images
+app.use(express.static(__dirname + '/public'));
+
+//var path = __dirname + '/html/';
+app.set('views', __dirname + '/views');
+
+app.use('/about', about_routes);
+
+/*
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
 });
 
-router.get("/",function(req,res){
-  res.sendFile(path + "index.html");
-});
-
 router.get('/style', function(req, res) {
   res.sendFile(path + 'style.css');
 });
+*/
 
-router.get("/about",function(req,res){
-  res.sendFile(path + "about.html");
-});
-//Alan's
-router.get("/aboutAlan",function(req,res){
-  res.sendFile(path + "aboutAlan.html");
-});
-router.get("/alanjpg", function (req, res) {
-  res.sendFile(path + "images/alan.jpg");
-});
-//Daisy's
-router.get("/aboutDaisy",function(req,res){
-  res.sendFile(path + "aboutDaisy.html");
-});
-router.get("/daisypng", function (req, res) {
-  res.sendFile(path + "images/daisy.png");
-});
-//Jon's
-router.get("/aboutJonathan",function(req,res){
-  res.sendFile(path + "aboutJonathan.html");
-});
-router.get("/BigJonjpg", function (req, res) {
-  res.sendFile(path + "images/BigJon.jpg");
-});
-//Russell's
-router.get("/aboutRussell", function (req, res) {
-  res.sendFile(path + "aboutRussell.html");
-});
-router.get("/russelljpg", function (req, res) {
-  res.sendFile(path + "images/russell.jpg");
-});
-//Ida's
-router.get("/aboutIda", function (req, res) {
-  res.sendFile(path + "aboutIda.html");
-});
-router.get("/idajpg", function (req, res) {
-  res.sendFile(path + "images/Ida.jpg");
-});
-//Sunny's
-router.get("/aboutSunminder", function (req, res) {
-  res.sendFile(path + "aboutSunminder.html");
-});
-router.get("/sunminderjpg", function (req, res) {
-  res.sendFile(path + "images/sunminder.jpg");
-});
-//Ryan's
-router.get("/aboutRyan", function (req, res) {
-  res.sendFile(path + "aboutRyan.html");
-});
-router.get("/ryanjpg", function (req, res) {
-  res.sendFile(path + "images/ryan.jpg");
-});
-router.get("/template", function (req, res) {
-  res.sendFile(path + "template.html");
+app.use("/",function(req,res){
+  res.render("index.html");
 });
 
-router.get("/contact",function(req,res){
-  res.sendFile(path + "contact.html");
+app.use("/template",function(req,res){
+  res.render("template.html");
 });
 
-app.use("/",router);
+app.use("/contact",function(req,res){
+  res.render("contact.html");
+});
 
 app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
+  res.render("404.html");
+  //res.send("Home");
+  //res.sendFile(path + "404.html");
 });
 
 app.listen(3000,function(){
