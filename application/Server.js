@@ -1,9 +1,10 @@
 const express = require("express");
 const about_routes = require('./routes/aboutRoutes');
+const item_routes = require('./routes/itemRoutes');
 
 const app = express();
-const router = express.Router();
-var path = __dirname + '/html/';
+//const router = express.Router();
+//var path = __dirname + '/html/';
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
