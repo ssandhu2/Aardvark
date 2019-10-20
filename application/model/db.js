@@ -3,7 +3,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'mysql'
+    database: 'aardvark_db'
 })
 
 db.connect((err) => {
@@ -12,3 +12,5 @@ db.connect((err) => {
     }
     console.log('Connected to database!');
 })
+
+module.exports = db;
