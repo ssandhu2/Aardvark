@@ -11,6 +11,9 @@ You are free to organize the contents of the folder as you see fit. But remember
 - [NodeJS](https://nodejs.org/en/download/)
 - [ExpressJS](https://expressjs.com/)
 - [Bootstrap](https://getbootstrap.com/)
+
+- [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/)
+ or [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/)
 ### Instructions to Deploy
 1. Clone this repository
 ```
