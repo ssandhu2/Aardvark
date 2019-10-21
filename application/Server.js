@@ -17,13 +17,13 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 
 app.use('/about', about_routes);
+app.use('/items', item_routes);
 
 /*
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
 });
-
 router.get('/style', function(req, res) {
   res.sendFile(path + 'style.css');
 });
@@ -55,5 +55,3 @@ app.use("*",function(req,res){
 app.listen(3000,function(){
   console.log("Live at Port 3000");
 });
-
-

@@ -1,24 +1,24 @@
 const db = require(__dirname + '/db.js');
 
-const CreateTables = () => {
+const CreateTables = async() => {
 
-    db.query('CREATE TABLE user ( '
+    await db.query('CREATE TABLE user ( '
         + 'id INT AUTO_INCREMENT PRIMARY KEY,'
         + 'name VARCHAR(150) NOT NULL,'
         + 'email VARCHAR(200) NOT NULL,'
         + 'password VARCHAR(200) NOT NULL,'
-        + 'phone INT,'
+        + 'phone VARCHAR(20),'
         + 'role INT,'
         + 'createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,'
         + 'updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
         + ')'
     );
 
-    db.query('CREATE TABLE item ( '
+    await db.query('CREATE TABLE item ( '
         + 'id INT AUTO_INCREMENT PRIMARY KEY,'
         + 'userId INT NOT NULL,'
         + 'name VARCHAR(150) NOT NULL,'
-        + 'description VARCHAR(MAX) NOT NULL,'
+        + 'description VARCHAR(255) NOT NULL,'
         + 'price INT NOT NULL,'
         + 'type INT,'
         + 'status INT,'
@@ -29,13 +29,18 @@ const CreateTables = () => {
 
 }
 
-const InsertDummy = () => {
+const InsertDummy = async() => {
+
+    await db.query("insert into user(id, name, email, password, phone, role) values (1, 'admin1', 'admin1@gmail.com', 'password', '9253241496', 1)");
+    await db.query("insert into user(id, name, email, password, phone, role) values (2, 'admin2', 'admin2@gmail.com','password', '9253241497', 1)");
+    await db.query("insert into item(id, userId, name, description, price, type, status) values (1, 1, 'CSC648 textbook', 'Software Engineering', 20, 1, 1)");
+    await db.query("insert into item(id, userId, name, description, price, type, status) values (2, 2, 'CSC656 textbook', 'Machine Structures', 50, 2, 2)");
 
     //role 1 is admin
     //type 1 item is books (for now)
     //status 1 is available for sale
 
-    db.query('INSERT INTO user SET id = 1,'
+    /*db.query('INSERT INTO user SET id = 1,'
         + 'name = "admin1",'
         + 'email = "admin1@gmail.com",'
         + 'password = password,'
@@ -61,5 +66,10 @@ const InsertDummy = () => {
         + 'type = 1,'
         + 'status = 1'
         + ')'
-    );
+    );  */
 }
+
+module.exports ={
+    CreateTables,
+    InsertDummy
+};
