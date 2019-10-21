@@ -34,7 +34,7 @@ about_routes.route('/').get((req,res) => {
     //res.sendFile(path + "index.html");
 });
 
-/*    
+/*
 about_routes.get('/style', function(req, res) {
     res.sendFile(path + 'style.css');
     });
