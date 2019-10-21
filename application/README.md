@@ -12,8 +12,8 @@ You are free to organize the contents of the folder as you see fit. But remember
 - [ExpressJS](https://expressjs.com/)
 - [Bootstrap](https://getbootstrap.com/)
 
-- [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/)
- or [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/)
+- [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/) For GUI [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/)
+
 ### Instructions to Deploy
 1. Clone this repository
 ```
@@ -31,3 +31,6 @@ npm install
 ```
 npm start
 ```
+
+## Note
+Currently MySQL is set to connect to root@localhost. See model/db.js.
