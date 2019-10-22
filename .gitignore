@@ -2,5 +2,5 @@
 *.class
 .idea/*
 *.iml
-
+node_modules/*
 .vscode/*
