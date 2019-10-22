@@ -20,43 +20,25 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <!-- Search bar -->
-            <!-- Still couldn't get it to the search-results.ejs page yet-->
             <div>
                 <header id="search-bar" style=>
-                        <!-- the action here is defined, but somehow the route isnt working -->
-                        <form method="post" action="searchResults">
-                            <div class="search-inner px-3">
+                    <form method="post" action="searchResults">
+                        <div class="search-inner px-3">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                <% let itemTypeDropdown = ["Books","Home goods","Others"]; %>
-                                <select class="form-control" name="itemType" style=" -webkit-appearance: none;
-                                -webkit-border-radius: 0px;height: 100%;">
-                                    <% if(typeof body == 'undefined' || body.itemType == ""){ %>
-                                    <option value="" selected>All</option>
-                                    <% }else{ %>
-                                    <option value="">All</option>
-                                    <% } %>
-                                    <% for(let i = 0; i < itemTypeDropdown.length; i++){ %>
-                                    <% if(typeof body != 'undefined' && body.listingType == itemTypeDropdown[i]){ %>
-                                    <option value="<%= itemTypeDropdown[i] %>" selected><%= itemTypeDropdown[i] %></option>
-                                    <% }else{ %>
-                                    <option value="<%= itemTypeDropdown[i] %>"><%= itemTypeDropdown[i] %></option>
-                                    <% } %>
-                                    <% } %>
-                                </select>
+                                    <select name="type">
+                                        <option value="books" <% if(type="books") { %>  > <% } %> Books </option>
+                                        <option value="electronics" <% if(type="electronics") { %> selected > <% } %> Electronics </option>
+                                        <option value="" selected="selected" >All Types</option>
+                                    </select>
                                 </div>
-                                <% let keyword = ""; %>
-                                <% if(typeof body != 'undefined'){ %>
-                                <% keyword = body.keyword; %>
-                                <% } %>
-                                <input name="keyword" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40"
-                                value="<%= keyword %>" />
-                                <span class="input-group-prepend">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                                </span>
+                                <% let searchTerm = ""; %>
+                            <input id="search" name="search" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40" value="<%= searchTerm %>" />
+                            <span class="input-group-prepend">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            </span>
                             </div>
                         </div>
                     </form>
