@@ -8,62 +8,44 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
 </head>
 <body>
 <div>
 <div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <% include layout/navbar %>
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Buy Sell</a>
+        <a class="navbar-brand" href="/">Aardvark</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <!-- Search bar -->
-            <!-- Still couldn't get it to the search-results.ejs page yet-->
             <div>
                 <header id="search-bar" style=>
-                        <!-- the action here is defined, but somehow the route isnt working -->
-                        <form method="post" action="searchResults">
-                            <div class="search-inner px-3">
+                    <form method="post" action="searchResults">
+                        <div class="search-inner px-3">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                <% let itemTypeDropdown = ["Books","Home goods","Others"]; %>
-                                <select class="form-control" name="itemType" style=" -webkit-appearance: none;
-                                -webkit-border-radius: 0px;height: 100%;">
-                                    <% if(typeof body == 'undefined' || body.itemType == ""){ %>
-                                    <option value="" selected>All</option>
-                                    <% }else{ %>
-                                    <option value="">All</option>
-                                    <% } %>
-                                    <% for(let i = 0; i < itemTypeDropdown.length; i++){ %>
-                                    <% if(typeof body != 'undefined' && body.listingType == itemTypeDropdown[i]){ %>
-                                    <option value="<%= itemTypeDropdown[i] %>" selected><%= itemTypeDropdown[i] %></option>
-                                    <% }else{ %>
-                                    <option value="<%= itemTypeDropdown[i] %>"><%= itemTypeDropdown[i] %></option>
-                                    <% } %>
-                                    <% } %>
-                                </select>
+                                    <select name="type">
+                                        <option value="books" <% if(type="books") { %>  > <% } %> Books </option>
+                                        <option value="electronics" <% if(type="electronics") { %> selected > <% } %> Electronics </option>
+                                        <option value="" selected="selected" >All Types</option>
+                                    </select>
                                 </div>
-                                <% let keyword = ""; %>
-                                <% if(typeof body != 'undefined'){ %>
-                                <% keyword = body.keyword; %>
-                                <% } %>
-                                <input name="keyword" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40"
-                                value="<%= keyword %>" />
-                                <span class="input-group-prepend">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </button>
-                                </span>
+                                <% let searchTerm = ""; %>
+                            <input id="search" name="search" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40" value="<%= searchTerm %>" />
+                            <span class="input-group-prepend">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            </span>
                             </div>
                         </div>
                     </form>
                 </header>
-            </div>
-            <!-- Other nav bar items -->
+            </div>  -->
+            <!-- Other nav bar items 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home
@@ -82,7 +64,7 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 </div>
 <br/>
 <div class="jumbotron"> <p>
@@ -91,5 +73,3 @@ Welcome to Aardvark! Please type in something in the above search bar for the se
 </div>
 </body>
 </html>
-
-

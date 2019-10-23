@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Search Results</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">Buy Sell</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <!-- Search bar -->
+                    <div>
+                        <div>
+                            <header id="search-bar" style=>
+                                    <form method="post" action="/result-items">
+                                        <div class="search-inner px-3">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                            <% let itemTypeDropdown = ["Books","Home goods","Others"]; %>
+                                            <select class="form-control" name="itemType" style=" -webkit-appearance: none;
+                                            -webkit-border-radius: 0px;height: 100%;">
+                                                <% if(typeof body == 'undefined' || body.itemType == ""){ %>
+                                                <option value="" selected>All</option>
+                                                <% }else{ %>
+                                                <option value="">All</option>
+                                                <% } %>
+                                                <% for(let i = 0; i < itemTypeDropdown.length; i++){ %>
+                                                <% if(typeof body != 'undefined' && body.listingType == itemTypeDropdown[i]){ %>
+                                                <option value="<%= itemTypeDropdown[i] %>" selected><%= itemTypeDropdown[i] %></option>
+                                                <% }else{ %>
+                                                <option value="<%= itemTypeDropdown[i] %>"><%= itemTypeDropdown[i] %></option>
+                                                <% } %>
+                                                <% } %>
+                                            </select>
+                                            </div>
+                                            <% let keyword = ""; %>
+                                            <% if(typeof body != 'undefined'){ %>
+                                            <% keyword = body.keyword; %>
+                                            <% } %>
+                                            <input name="keyword" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40"
+                                            value="<%= keyword %>" />
+                                            <span class="input-group-prepend">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </header>
+                        </div>
+                    </div>
+                    <!-- Other nav bar items -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <br/>
+    <div class="jumbotron">
+        <p>THIS IS THE SEARCH RESULT PAGE.</p>
+    </div>
+    <div class="row">
+        <% for(let i=0; i < searchResults.length; i++) { %>
+        <h3><%= searchResults[i].name %></h3>
+        <% } %>
+    </div>
+        
+
+    </div>
+</div>
+</body>
+</html>

@@ -17,25 +17,19 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 
 app.use('/about', about_routes);
+app.use('/searchResults', item_routes);
 
 /*
 router.use(function (req,res,next) {
   console.log("/" + req.method);
   next();
 });
-
 router.get('/style', function(req, res) {
   res.sendFile(path + 'style.css');
 });
 */
-
 app.use("/",function(req,res){
-  res.render("index");
-});
-
-//trying to route it to search-results.ejs
-app.use("/searchResults",function(req,res){
-  res.render("search-results");
+  res.render("index", {page: 'home'});
 });
 
 app.use("/template",function(req,res){
@@ -52,8 +46,6 @@ app.use("*",function(req,res){
   //res.sendFile(path + "404.html");
 });
 
-app.listen(3000,function(){
-  console.log("Live at Port 3000");
+app.listen(80,function(){
+  console.log("Live at Port 80");
 });
-
-
