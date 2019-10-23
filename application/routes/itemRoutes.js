@@ -11,7 +11,7 @@ app.use(parser);
 
 sqlRouter.get("/", (req, res) => {
     //TO ADD CODE HERE IF SOMEONE GOES STRAIGHT TO THE URL
-    res.render("results");
+    res.render("results",);
 });
 
 sqlRouter.post("/", parser, (req,res) => {
@@ -19,7 +19,6 @@ sqlRouter.post("/", parser, (req,res) => {
     //get request body stuff from index.ejs 
     let searchTerm = req.body.search;
     let type = req.body.type;
-
     //search logic
     let query = "SELECT * FROM item;";
     if (searchTerm != '' && type != ''){

@@ -28,9 +28,8 @@ router.get('/style', function(req, res) {
   res.sendFile(path + 'style.css');
 });
 */
-
 app.use("/",function(req,res){
-  res.render("index");
+  res.render("index", {page: 'home'});
 });
 
 app.use("/template",function(req,res){
