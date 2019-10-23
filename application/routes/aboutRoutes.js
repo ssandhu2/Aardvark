@@ -2,35 +2,35 @@ let express = require('express');
 let about_routes = express.Router();
 
 about_routes.get("/ida", function (req, res) {
-    res.render("aboutIda.html");
+    res.render("aboutIda", {page: 'about'});
 });
 
 about_routes.get("/alan", function (req, res) {
-    res.render("aboutAlan.html");
+    res.render("aboutAlan", {page: 'about'});
 });
 
 about_routes.get("/russell", function (req, res) {
-    res.render("aboutRussell.html");
+    res.render("aboutRussell", {page: 'about'});
 });
 
 about_routes.get("/ryan", function (req, res) {
-    res.render("aboutRyan.html");
+    res.render("aboutRyan", {page: 'about'});
 });
 
 about_routes.get("/jonathan", function (req, res) {
-    res.render("aboutJonathan.html");
+    res.render("aboutJonathan", {page: 'about'});
 });
 
 about_routes.get("/daisy", function (req, res) {
-    res.render("aboutDaisy.html");
+    res.render("aboutDaisy", {page: 'about'});
 });
 
 about_routes.get("/sunminder", function (req, res) {
-    res.render("aboutSunminder.html");
+    res.render("aboutSunminder", {page: 'about'});
 });
 
 about_routes.route('/').get((req,res) => {
-    res.render('about.html');
+    res.render('about', {page: 'about'});
     //res.sendFile(path + "index.html");
 });
 
