@@ -2,7 +2,7 @@ let express = require('express');
 let about_routes = express.Router();
 
 about_routes.get("/ida", function (req, res) {
-    res.render("aboutIda.html", {page: 'about'});
+    res.render("aboutIda", {page: 'about'});
 });
 
 about_routes.get("/alan", function (req, res) {
@@ -10,15 +10,15 @@ about_routes.get("/alan", function (req, res) {
 });
 
 about_routes.get("/russell", function (req, res) {
-    res.render("aboutRussell.html", {page: 'about'});
+    res.render("aboutRussell", {page: 'about'});
 });
 
 about_routes.get("/ryan", function (req, res) {
-    res.render("aboutRyan.html", {page: 'about'});
+    res.render("aboutRyan", {page: 'about'});
 });
 
 about_routes.get("/jonathan", function (req, res) {
-    res.render("aboutJonathan.html", {page: 'about'});
+    res.render("aboutJonathan", {page: 'about'});
 });
 
 about_routes.get("/daisy", function (req, res) {
@@ -26,7 +26,7 @@ about_routes.get("/daisy", function (req, res) {
 });
 
 about_routes.get("/sunminder", function (req, res) {
-    res.render("aboutSunminder.html", {page: 'about'});
+    res.render("aboutSunminder", {page: 'about'});
 });
 
 about_routes.route('/').get((req,res) => {
