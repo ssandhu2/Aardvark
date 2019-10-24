@@ -8,6 +8,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div>
@@ -52,7 +53,7 @@
                                             <input name="keyword" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40"
                                             value="<%= keyword %>" />
                                             <span class="input-group-prepend">
-                                            <button class="btn btn-primary" type="submit">
+                                            <button class="btn btn-primary" type="button">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
                                             </button>
                                             </span>
@@ -87,11 +88,9 @@
     </div>
     <div class="row">
         <% for(let i=0; i < searchResults.length; i++) { %>
-        <h3><%= searchResults[i].name %></h3>
+        <h3 class="col-sm-12" style="text-align:left;"><%= searchResults[i].name %></h3>
         <% } %>
-    </div>
-        
-
+         </div>
     </div>
 </div>
 </body>
