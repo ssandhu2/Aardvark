@@ -1,37 +1,68 @@
-<div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div class="container">
-              <a class="navbar-brand" href="/">Aardvark</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                  <div>
-                      <header id="search-bar" style=>
-                          <form method="post" action="searchResults">
-                              <div class="search-inner px-3">
-                                  <div class="input-group mb-3">
-                                      <div class="input-group-prepend">
-                                          <select name="type">
-                                              <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
-                                              <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-                                              <option value="home goods" <% if(type="home goods") { %> selected > <% } %> Home Goods </option>
-                                              <option value="" selected="selected" >All</option>
-                                          </select>
-                                      </div>
-                                      <% let searchTerm = ""; %>
-                                  <input id="search" name="search" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40" value="<%= searchTerm %>" />
-                                  <span class="input-group-prepend">
-                                  <button class="btn btn-primary" type="submit">
-                                      <i class="fa fa-search" aria-hidden="true"></i>
-                                  </button>
-                                  </span>
-                                  </div>
-                              </div>
-                          </form>
-                      </header>
-                  </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Aardvark</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <!-- Search bar -->
+                <div>
+                    <div>
+                        <header id="search-bar" style=>
+                                <form method="post" action="/result-items">
+                                    <div class="search-inner px-3">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <% let itemTypeDropdown = ["Books","Home goods","Others"]; %>
+                                        <select class="form-control" name="itemType" style=" -webkit-appearance: none;
+                                        -webkit-border-radius: 0px;height: 100%;">
+                                            <% if(typeof body == 'undefined' || body.itemType == ""){ %>
+                                            <option value="" selected>All</option>
+                                            <% }else{ %>
+                                            <option value="">All</option>
+                                            <% } %>
+                                            <% for(let i = 0; i < itemTypeDropdown.length; i++){ %>
+                                            <% if(typeof body != 'undefined' && body.listingType == itemTypeDropdown[i]){ %>
+                                            <option value="<%= itemTypeDropdown[i] %>" selected><%= itemTypeDropdown[i] %></option>
+                                            <% }else{ %>
+                                            <option value="<%= itemTypeDropdown[i] %>"><%= itemTypeDropdown[i] %></option>
+                                            <% } %>
+                                            <% } %>
+                                        </select>
+                                        </div>
+                                        <% let keyword = ""; %>
+                                        <% if(typeof body != 'undefined'){ %>
+                                        <% keyword = body.keyword; %>
+                                        <% } %>
+                                        <input name="keyword" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40"
+                                        value="<%= keyword %>" />
+                                        <span class="input-group-prepend">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                        </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </header>
+                    </div>
+                </div>
+                  <!-- Other nav bar items -->
+                  <ul class="navbar-nav ml-auto">
+                    
+                        <li class="nav-item  <% if (page === 'home') { %>active <% } %>">
+                            <a class="nav-link" href="/">Home
+                              <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  <% if (page === 'about') { %>active <% } %>">
+                            <a class="nav-link" href="/about">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
                   <!-- Other nav bar items -->
                   <ul class="navbar-nav ml-auto">
                     

@@ -65,6 +65,7 @@ sqlRouter.post("/", parser, (req,res) => {
         // type for the type selected, null if All Types
         // searchResults is the array of items. 
         res.render("results", {
+            page: "home",
             searchTerm: req.searchTerm,
             searchResults: req.searchResult,
             type: req.type
