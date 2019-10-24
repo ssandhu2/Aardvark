@@ -58,16 +58,23 @@ sqlRouter.post("/", parser, (req,res) => {
 
         // print results for debugging purposes
         console.log(`searchTerm: ${searchTerm}, type: ${type}`);
-        console.log(result);
+        // console.log(result);
 
         // these are what passed into results.ejs
         // searchTerm for what was typed into the search bar
         // type for the type selected, null if All Types
         // searchResults is the array of items. 
+        var imgblobs = [];
+        for(var i = 0; i<result.length; i++) {
+            imgblobs [i] = new Buffer( result[i].itemImage, 
+                'binary').toString('base64');
+          }
+        // console.log(req.searchResult);
         res.render("results", {
             page: "home",
             searchTerm: req.searchTerm,
             searchResults: req.searchResult,
+            imgblobs: imgblobs,
             type: req.type
         })
     })

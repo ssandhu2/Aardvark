@@ -11,7 +11,7 @@
         <p>THIS IS THE SEARCH RESULT PAGE.</p>
     </div>
         <% for(let i=0; i < searchResults.length; i++) { %>    <div class="media border p-3">
-            <img src="https://via.placeholder.com/150" alt="John Doe" class="" style="width:60px;">
+            <img src="data:itemImage/jpg;base64,<%= imgblobs[i] %>" alt="<%= searchResults[i].name %>" class="" style="width:60px;"/>
             <div class="media-body">
                 <div class="d-flex justify-content-between">
                     <div>
