@@ -86,12 +86,24 @@
     <div class="jumbotron">
         <p>THIS IS THE SEARCH RESULT PAGE.</p>
     </div>
-    <div class="row">
-        <% for(let i=0; i < searchResults.length; i++) { %>
-        <h3 class="col-sm-12" style="text-align:left;"><%= searchResults[i].name %></h3>
+        <% for(let i=0; i < searchResults.length; i++) { %>    <div class="media border p-3">
+            <img src="https://via.placeholder.com/150" alt="John Doe" class="" style="width:60px;">
+            <div class="media-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                    <h3 class="col-sm-12" style="text-align:left;">
+                        <%= searchResults[i].name %> 
+                    </div>
+                    <div>
+                        $<%= searchResults[i].price %>.00</h3>
+                    </div>
+                </div>
+              <p class="col-sm-12"><%= searchResults[i].description %></p>
+            </div>
+          </div>
         <% } %>
-         </div>
     </div>
+
 </div>
 </body>
 </html>
