@@ -14,10 +14,10 @@
                                   <div class="input-group mb-3">
                                       <div class="input-group-prepend">
                                           <select name="type">
-                                              <option value="" selected="selected" >All</option>
                                               <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
                                               <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-                                              <option value="home goods" <% if(type="home goods") { %> > <% } %> Home Goods </option>
+                                              <option value="home goods" <% if(type="home goods") { %> selected > <% } %> Home Goods </option>
+                                              <option value="" selected="selected" >All</option>
                                           </select>
                                       </div>
                                       <% let searchTerm = ""; %>
