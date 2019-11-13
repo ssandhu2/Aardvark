@@ -19,21 +19,20 @@ app.set('views', __dirname + '/views');
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 
-/*
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
-});
-router.get('/style', function(req, res) {
-  res.sendFile(path + 'style.css');
-});
-*/
-app.use("/",function(req,res){
-  res.render("index", {page: 'home'});
+app.get('/login', (req, res) => {
+  res.render("login", {page: 'login'});
 });
 
-app.use("/template",function(req,res){
-  res.render("template.html");
+app.get('/register', (req, res) => {
+  res.render("register", {page: 'register'});
+});
+
+app.get('/sell', (req, res) => {
+  res.render("post_new", {page: 'sell'});
+});
+
+app.use("/",function(req,res){
+  res.render("index", {page: 'home'});
 });
 
 app.use("/contact",function(req,res){
@@ -42,8 +41,6 @@ app.use("/contact",function(req,res){
 
 app.use("*",function(req,res){
   res.render("404.html");
-  //res.send("Home");
-  //res.sendFile(path + "404.html");
 });
 
 app.listen(80,function(){
