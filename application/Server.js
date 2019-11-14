@@ -31,12 +31,12 @@ app.get('/sell', (req, res) => {
   res.render("post_new", {page: 'sell'});
 });
 
-app.use("/",function(req,res){
-  res.render("index", {page: 'home'});
+app.use("/contact", (req, res) => {
+  res.render("contact", {page: 'contact'});
 });
 
-app.use("/contact",function(req,res){
-  res.render("contact.html");
+app.use("/",function(req,res){
+  res.render("index", {page: 'home'});
 });
 
 app.use("*",function(req,res){
