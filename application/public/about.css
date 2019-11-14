@@ -1,0 +1,68 @@
+
+body{
+    background-color: white;
+    margin-top: 200px;
+}
+h3{
+    margin-left: 375px;
+    font-family: 'Cardo', serif;
+}
+h4{
+    margin-left: 375px;
+    font-family: 'Cardo', serif;
+}
+
+
+img.align-left {
+  display: block;
+  margin: 200px auto;
+  margin-left: 300px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+
+ 
+} 
+img.medium {
+ 
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
+}
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    margin-left: 300px;
+
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.entry{
+    float: left;
+    margin-left: auto;
+    margin-right: auto; 
+    font-family: 'Cardo', serif;
+}
+
+
+#about{
+    font-family: 'Cardo', serif;
+    font-size: 16px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 0px black;
+    width: 300px;
+    padding: 20px;
+    margin-top: 200px;
+    margin-left: 800px;
+
+  
+}
+
