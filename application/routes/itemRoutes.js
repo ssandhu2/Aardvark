@@ -160,6 +160,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 			console.log(itemImage);
 			db.query("INSERT INTO item SET ?", data);
 		}
+		//console.log();
 		res.redirect('/');
 	})();
 });
