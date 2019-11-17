@@ -9,33 +9,35 @@
 
     </div>
 
-    <body>
-      <h1>Create Account</h1>
-      <div style="margin-top: 70px">
-        <div class="container-fluid">
-      <form role="form" method="POST" id="reused_form" action="/login.ejs>
+    <div style="margin-top: 70px">
+      <h1>Sign In</h1>
+      <div class="container-fluid">
+        <form role="form" method="POST" id="reused_form" action="/login.ejs>
 
-        <div class="container">
+        <div class=" container">
           <div class="form-group">
             <label for="exampleInputUser">Username:</label>
             <input name="username" class="form-control" id="username" aria-describedby="emailHelp"
-              placeholder="Enter username">
+              placeholder="USERNAME">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-              placeholder="Password">
+              placeholder="PASSWORD">
             <div>
               <p class="message"> Forgot Password? <a href="#"> Reset </a></p>
             </div>
             <div>
               <p class="message"> Don't have an account? <a href="#"> Register </a></p>
-              <button > login </button>
+              <button> Login </button>
             </div>
           </div>
-        </div>
+      </div>
 
       </form>
     </div>
   </div>
-    </body>
+  <% include layout/footer %>
+</body>
+
+</html>
