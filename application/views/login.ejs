@@ -9,18 +9,23 @@
 
     </div>
 
-    <div style="margin-top: 70px">
-      <h1>Sign In</h1>
-      <div class="container-fluid">
-        <form role="form" method="POST" id="reused_form" action="/login.ejs>
+    <div style="margin-top: 200px"></div>
+
+    <div class="container" style="border-style:solid; width:470px;">
+
+
+      <form class="center" style="width:97%">
+        <h1 style="text-align:center"> Sign In </h1>
 
         <div class=" container">
-          <div class="form-group">
+
+          <div class="form-group col">
             <label for="exampleInputUser">Username:</label>
             <input name="username" class="form-control" id="username" aria-describedby="emailHelp"
               placeholder="USERNAME">
           </div>
-          <div class="form-group">
+
+          <div class="form-group col">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1"
               placeholder="PASSWORD">
@@ -29,10 +34,11 @@
             </div>
             <div>
               <p class="message"> Don't have an account? <a href="#"> Register </a></p>
-              <button> Login </button>
+              <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Login</button>
             </div>
           </div>
-      </div>
+
+        </div>
 
       </form>
     </div>
