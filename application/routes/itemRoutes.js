@@ -1,8 +1,22 @@
-const express = require ('express');
-const sqlRouter = express.Router();
-const db = require('../model/db.js');
+const express = require ('express');
+const sqlRouter = express.Router();
+const db = require('../model/db.js');
 const bodyparser = require('body-parser');
-const init = require('../model/init.js');
+const init = require('../model/init.js');
+
+const multer = require('multer');
+const Jimp = require('jimp');
+
+const storage = multer.diskStorage({
+	destination(req, file, cb) {
+		cb(null, 'images');
+	},
+	filename(req, file, cb) {
+		cb(null, `${file.fieldname}-${Date.now()}`);
+	},
+});
+
+const imgUpload = multer({storage});
 
 // parser to parse request body form-data
 let parser = bodyparser.urlencoded({extended: false});
@@ -80,20 +94,91 @@ sqlRouter.post("/", parser, (req,res) => {
     })
 })
 
-// for testing
-sqlRouter.route('/tables').get((req, res) => {
-    (async () => {
-      await init.CreateTables();
-      res.send('Created Tables.');
-    })();
-  });
+async function makeImage(path){
+	try{
+		const imgBuffer = await Jimp.read(path)
+		.then(lenna => lenna
+			.resize(1000, Jimp.AUTO)
+			.quality(80)
+			.getBufferAsync(Jimp.MIME_JPEG));
+			return imgBuffer;
+	}
+	catch(err){
+		return 'err';
+	}
+}
+sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res) => {
+	(async() => {
+		let item = req.body.nameofitem;
+		let price = req.body.price;
+		let itemType = req.body.type;
+		let itemD = req.body.item_description;
+		console.log(item + " " +price + " " + itemType + " " + itemD);
+
+		let itemImage;
+		if (req.file) {
+			itemImage = await makeImage(req.file.path);
+		}
+
+		if(req.body.type == 'texts'){
+			let data = {
+				userId: '1',
+				name: req.body.nameofitem,
+				description: req.body.item_description,
+				price: req.body.price,
+				type: req.body.type,
+				status: '1',
+				itemImage: itemImage
+			};
+			console.log(itemImage);
+			db.query("INSERT INTO item SET ?", data);
+		}
+		else if (req.body.type == 'school supplies'){
+			let data = {
+				userId: '2',
+				name: req.body.nameofitem,
+				description: req.body.item_description,
+				price: req.body.price,
+				type: req.body.type,
+				status: '1',
+				itemImage: itemImage
+			};
+			console.log(itemImage);
+			db.query("INSERT INTO item SET ?", data);
+		}
+
+		else if (req.body.type == 'home goods'){
+			let data = {
+				userId: '3',
+				name: req.body.nameofitem,
+				description: req.body.item_description,
+				price: req.body.price,
+				type: req.body.type,
+				status: '1',
+				itemImage: itemImage
+			};
+			console.log(itemImage);
+			db.query("INSERT INTO item SET ?", data);
+		}
+		//console.log();
+		res.redirect('/');
+	})();
+});
 
 // for testing
- sqlRouter.route('/insert').get((req, res) => {
-    (async () => {
-      await init.InsertDummy();
-      res.send('Inserted Data');
-    })();
-  });
+sqlRouter.route('/tables').get((req, res) => {
+    (async () => {
+      await init.CreateTables();
+      res.send('Created Tables.');
+    })();
+  });
 
-module.exports = sqlRouter;
+// for testing
+ sqlRouter.route('/insert').get((req, res) => {
+    (async () => {
+      await init.InsertDummy();
+      res.send('Inserted Data');
+    })();
+  });
+
+module.exports = sqlRouter;
