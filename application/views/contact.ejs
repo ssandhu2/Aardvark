@@ -9,26 +9,30 @@
 
         </div>
         <br />
-        <h1>Contact Company</h1>
-        <form>
-    
-            <label>Name:</label>
-            <input type="text" class="form-control" id="name" aria-describedby="name"
-                placeholder="Enter email">
+       
+        <div class="center" style="margin: 5%">
+            <h1>Contact Company</h1>
             <br />
-            <label>Email:</label>
-            <input type="text" class="form-control" id="email" placeholder="Email">
-            <br />
-            <label>Subject:</label>
-            <input type="text class="form-control" id="email" placeholder="Subject Title">
-            <br />
-            <label>Desciption:</label>
-            <textarea id="myTextarea">   </textarea>
-            <br />
-    
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <form class="center" >
+
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="e.g. Jane Doe">
+                <br />
+                <label>Email</label>
+                <input type="text" class="form-control" id="email" placeholder="e.g. jane@email.com">
+                <br />
+                <label>Subject</label>
+                <input type="text" class="form-control" id="subject" placeholder="Your Subject">
+                <br />
+                <label>Message</label>
+                <textarea class="form-control" id="textarea" rows="3" placeholder="Your Message"></textarea>
+                <br />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
     </div>
+    <% include layout/footer %>
 </body>
 
 </html>
