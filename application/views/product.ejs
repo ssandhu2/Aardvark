@@ -7,7 +7,7 @@
 </div>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
     <div class="row justify-content-around" style="margin-top: 70px;">
         <div class="col-sm-4" >
         <h1><%= item[0].name %></h1>
@@ -17,7 +17,7 @@
         </div>
        
             
-        <div class="col-sm-4" style="right:100px">
+        <div class="col-sm-4" style="margin-top: 50px;">
             <div class="card h-100">
 
                 <!-- TO ACCESS item ARRAY FROM BACKEND.  -->
@@ -35,7 +35,9 @@
                         
                     <!-- <div class=" ml-auto"><a href="#" class="btn btn-primary">Go somewhere</a></div> -->
                     <div class="d-flex mt-auto justify-content-between">
+
                             <div>
+                                 <h4>$<%= item[0].price %>.00</h4>
                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Contact Seller</a>
                                     
                                     <div class="modal fade" id="myModal" role="dialog">
