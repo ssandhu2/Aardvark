@@ -27,6 +27,10 @@ app.get('/register', (req, res) => {
   res.render("register", {page: 'register'});
 });
 
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard', { page: 'dashboard' });
+});
+
 app.get('/sell', (req, res) => {
   res.render("post_new", {page: 'sell'});
 });
