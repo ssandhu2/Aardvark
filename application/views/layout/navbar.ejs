@@ -35,8 +35,13 @@
                   <!-- Other nav bar items -->
                   <ul class="navbar-nav ml-auto">
                     <!--Need to link these pages-->
+
+                    <li class="nav-item  <% if (page === 'message') { %>active <% } %>">
+                        <a class="nav-link" style="color: white;" href="/message">Inbox</a>
+
                     <li class="nav-item  <% if (page === 'dashboard') { %>active <% } %>">
                         <a class="nav-link" style="color: white;" href="/dashboard">Dashboard</a>
+
                     </li>
                     <li class="nav-item  <% if (page === 'sell') { %>active <% } %>">
                         <a class="nav-link" style="color: white;" href="/sell">Sell</a>
