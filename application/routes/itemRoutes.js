@@ -42,7 +42,7 @@ sqlRouter.post("/", parser, (req,res) => {
 
     // search logic
     // status=1 for approved items
-    let query = "SELECT * FROM item;";
+    let query = "SELECT * FROM item WHERE status =1;";
     if (searchTerm != '' && type != ''){
         query = `SELECT * FROM item WHERE status=1 AND type="${type}" AND ( name LIKE "%${searchTerm}%" OR description LIKE "%${searchTerm}%");`
     }
@@ -70,11 +70,9 @@ sqlRouter.post("/", parser, (req,res) => {
         req.searchTerm = searchTerm;
         req.type = type;
 
-        // print results for debugging purposes
-        console.log(`searchTerm: ${searchTerm}, type: ${type}`);
-        // console.log(result);
+		console.log(`searchTerm: ${searchTerm}, type: ${type}`);
+		//console.log(result);
 
-        // these are what passed into results.ejs
         // searchTerm for what was typed into the search bar
         // type for the type selected, null if All Types
         // searchResults is the array of items. 
@@ -83,7 +81,7 @@ sqlRouter.post("/", parser, (req,res) => {
             imgblobs [i] = new Buffer( result[i].itemImage, 
                 'binary').toString('base64');
           }
-        // console.log(req.searchResult);
+
         res.render("results", {
             page: "home",
             searchTerm: req.searchTerm,
@@ -92,6 +90,33 @@ sqlRouter.post("/", parser, (req,res) => {
             type: req.type
         })
     })
+})
+
+// for single item/product page
+sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
+
+	query = `SELECT * FROM item WHERE status=1 AND id=${req.params.id};`;
+
+	console.log(`query for single item: ${query}`);
+
+	db.query(query, (err, result) => {
+
+        if (err) {
+            console.log(`error: ${err}`);
+            req.result = "";
+        }
+
+		req.result = result;
+		console.log(req.result);
+
+		let imgBlob = new Buffer( result[0].itemImage, 'binary').toString('base64');
+
+        res.render("product", {
+            page: "home",
+            item: req.result,
+            img: imgBlob,
+		})
+	})
 })
 
 async function makeImage(path){
@@ -107,6 +132,7 @@ async function makeImage(path){
 		return 'err';
 	}
 }
+
 sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res) => {
 	(async() => {
 		let item = req.body.nameofitem;
