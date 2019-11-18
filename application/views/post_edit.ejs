@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<% include layout/header %>
+
+<body>
+    <div>
+        <div>
+            <% include layout/navbar %>
+
+        </div>
+        <br />
+        <h1>Edit Post</h1>
+        <form class="center" style="width:75%">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="productname">Item</label>
+                    <input type="text" class="form-control" id="productname" placeholder="Name of Item">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" placeholder="Price">
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <div class="form-group col">
+                    <label for="category">Category</label>
+                    <select id="category" class="form-control">
+                        <option selected>Select</option>
+                        <option>Text Books</option>
+                        <option>Home goods</option>
+                        <option>School Supplies</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="item_desciption">Desciption</label>
+                <input type="text" class="form-control" id="item_desciption" placeholder="Desciption">
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -31,16 +31,6 @@ about_routes.get("/sunminder", function (req, res) {
 
 about_routes.route('/').get((req,res) => {
     res.render('about', {page: 'about'});
-    //res.sendFile(path + "index.html");
 });
-
-/*
-about_routes.get('/style', function(req, res) {
-    res.sendFile(path + 'style.css');
-    });
-
-    about_routes.get("/contact",function(req,res){
-    res.sendFile(path + "contact.html");
-}); */
 
 module.exports = about_routes;

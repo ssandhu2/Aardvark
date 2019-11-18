@@ -7,10 +7,13 @@
         <% include layout/navbar %>
     </div>
     <br/>
+    <div class="container-fluid">
     <div class="jumbotron">
         <p>THIS IS THE SEARCH RESULT PAGE.</p>
     </div>
-        <% for(let i=0; i < searchResults.length; i++) { %>    <div class="media border p-3">
+        <% for(let i=0; i < searchResults.length; i++) { %>   
+            <a style="display:block; color: black;" href="/searchResults/<%= searchResults[i].id %>">
+            <div class="media border p-3">
             <img src="data:itemImage/jpg;base64,<%= imgblobs[i] %>" alt="<%= searchResults[i].name %>" class="" style="width:60px;"/>
             <div class="media-body">
                 <div class="d-flex justify-content-between">
@@ -25,8 +28,10 @@
               <p class="col-sm-12"><%= searchResults[i].description %></p>
             </div>
           </div>
+        </a>
         <% } %>
     </div>
+</div>
 <% include layout/footer %> 
 </body>
 </html>

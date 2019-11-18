@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<% include layout/header %>
+
+<body>
+    <div>
+        <div>
+            <% include layout/navbar %>
+
+        </div>
+        <br />
+       
+        <div class="center" style="margin: 5%">
+            <h1>Contact Aardvark</h1>
+            <br />
+            <form class="center" >
+
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="e.g. Jane Doe">
+                <br />
+                <label>Email</label>
+                <input type="text" class="form-control" id="email" placeholder="e.g. jane@email.com">
+                <br />
+                <label>Subject</label>
+                <input type="text" class="form-control" id="subject" placeholder="Your Subject">
+                <br />
+                <label>Message</label>
+                <textarea class="form-control" id="textarea" rows="3" placeholder="Your Message"></textarea>
+                <br />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+    <% include layout/footer %>
+</body>
+
+</html>

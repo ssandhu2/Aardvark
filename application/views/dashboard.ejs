@@ -1,42 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include layout/header %>
-    <body>
-        <div>
-            <div>
-                <% include layout/navbar %>
-            </div>
-            <br /> 
-    
-        
-        <!--Seller dashboard-->
-        <div class="container-fluid" style="margin-top: 70px; margin-bottom: 70px;">
-            <h3>Seller's Inventory Management</h3>
+  <% include layout/header %>
+  <body>
+    <div>
+      <div>
+        <% include layout/navbar %>
+      </div>
+      <script>
+        $(document).ready(function() {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
+
+      <!--Seller dashboard-->
+      <div
+        class="container-fluid"
+        style="margin-top: 70px; margin-bottom: 70px;"
+      >
+        <h3>Seller's Inventory Management</h3>
+      </div>
+      <!--Sellers item and description-->
+      <div class="d-flex flex-column">
+        <div class="p-3 w-75 border border-secondary" style="margin: auto;">
+          <ul class="list-unstyled">
+            <li class="media">
+              <!--image from database-->
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+              </div>
+              <img src="..." class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">List-based media object</h5>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                nisi vulputate fringilla. Donec lacinia congue felis in
+                faucibus.
+              </div>
+              <!--buttons for edit and trash-->
+              <div class="col-sm-4" style="text-align: right">
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="edit"
+                  ><i class="fa fa-pencil"></i
+                ></a>
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="delete"
+                  ><i class="fa fa-trash-o"></i
+                ></a>
+              </div>
+            </li>
+            <hr />
+            <li class="media my-4">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+              </div>
+              <!--image from database-->
+              <img src="..." class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">List-based media object</h5>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                nisi vulputate fringilla. Donec lacinia congue felis in
+                faucibus.
+              </div>
+              <!--buttons for edit and trash-->
+              <div class="col-sm-4" style="text-align: right">
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="edit"
+                  ><i class="fa fa-pencil"></i
+                ></a>
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="delete"
+                  ><i class="fa fa-trash-o"></i
+                ></a>
+              </div>
+            </li>
+            <hr />
+            <li class="media">
+              <!--image from database-->
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+              </div>
+              <img src="..." class="mr-3" alt="..." />
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">List-based media object</h5>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+                vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                nisi vulputate fringilla. Donec lacinia congue felis in
+                faucibus.
+              </div>
+              <!--buttons for edit and trash-->
+              <div class="col-sm-4" style="text-align: right">
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="edit"
+                  ><i class="fa fa-pencil"></i
+                ></a>
+                <a
+                  href="#"
+                  class="btn btn-secondary btn-circle"
+                  data-toggle="tooltip"
+                  title="delete"
+                  ><i class="fa fa-trash-o"></i
+                ></a>
+              </div>
+            </li>
+          </ul>
         </div>
-        <!--Sellers item and description-->
-        <div class="d-flex flex-column">
-            <div class="p-3 w-75 border border-secondary" style="margin: auto;">
-                <div class="row clear-fix">
-                    <div class="col-sm-4">
-                        <p>place image here:</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <p>Assign responsive-friendly margin or padding values to an element or a subset of its sides with
-                            shorthand classes.
-                            Includes support for individual properties, all properties, and vertical and horizontal properties.
-                            Classes are built
-                            from a default Sass map ranging from .25rem to 3rem.</p>
-                    </div>
-                    <!--buttons for editing and deleting-->
-                    <div class="col-sm-4" style="text-align: right">
-                        <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip" title="edit"><i
-                                class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip" title="delete"><i
-                                class="fa fa-trash-o"></i></a>
-                    </div>
-                 </div>
-            </div>
-            </div>
-        </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>

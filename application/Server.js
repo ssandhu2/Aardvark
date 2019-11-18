@@ -19,31 +19,41 @@ app.set('views', __dirname + '/views');
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 
-/*
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
+app.get('/login', (req, res) => {
+  res.render("login", {page: 'login'});
 });
-router.get('/style', function(req, res) {
-  res.sendFile(path + 'style.css');
+
+app.get('/register', (req, res) => {
+  res.render("register", {page: 'register'});
 });
-*/
+
+app.get('/dashboard', (req, res) => {
+  res.render('dashboard', { page: 'dashboard' });
+});
+
+app.get('/inbox', (req, res) => {
+  res.render('inbox', { page: 'inbox' });
+});
+
+app.get('/message', (req, res) => {
+  res.render('message', { page: 'message' });
+});
+
+
+app.get('/sell', (req, res) => {
+  res.render("post_new", {page: 'sell'});
+});
+
+app.use("/contact", (req, res) => {
+  res.render("contact", {page: 'contact'});
+});
+
 app.use("/",function(req,res){
   res.render("index", {page: 'home'});
 });
 
-app.use("/template",function(req,res){
-  res.render("template.html");
-});
-
-app.use("/contact",function(req,res){
-  res.render("contact.html");
-});
-
 app.use("*",function(req,res){
   res.render("404.html");
-  //res.send("Home");
-  //res.sendFile(path + "404.html");
 });
 
 app.listen(80,function(){

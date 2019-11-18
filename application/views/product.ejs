@@ -7,19 +7,26 @@
 </div>
 
 <body>
-    <div class="row" style="margin-top: 5rem;">
-        <div class="col-md-3">
-            <!--col-md-3-->
-
+    <div class="container">
+    <div class="row justify-content-around" style="margin-top: 70px;">
+        <div class="col-sm-4" >
+        <h1><%= item[0].name %></h1>
+        
+          
+            <img src="data:itemImage/jpg;base64,<%= img %>" alt="<%= item[0].name %>" class="" style="width:400px;"/>  
         </div>
-        <!--col-md-3-->
-        <div class="col-md-3">
-            <!--col-md-6-->
-            <img src="https://via.placeholder.com/500" class="rounded"></div>
-        <div class="col-md-3">
+       
+            
+        <div class="col-sm-4" style="margin-top: 50px;">
             <div class="card h-100">
+
+                <!-- TO ACCESS item ARRAY FROM BACKEND.  -->
+                <!-- <h1><%= item[0].name %></h1>
+                <h1><%= item[0].price %></h1>
+                <img src="data:itemImage/jpg;base64,<%= img %>" alt="<%= item[0].name %>" class="" style="width:60px;"/> -->
+                <!-- ONLY 1 OBJECT HENCE INDEX[0] -->
+
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                         ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
@@ -28,30 +35,75 @@
                         
                     <!-- <div class=" ml-auto"><a href="#" class="btn btn-primary">Go somewhere</a></div> -->
                     <div class="d-flex mt-auto justify-content-between">
-                            <div>
-                               <p class="text-muted"><small> posted at [time:time]</small></p>
 
-                            </div>
                             <div>
-                                    <a href="#" class="btn btn-primary">Add to wishlist</a>
-                                    <a href="#" class="btn btn-primary">Contact Seller</a>
+                                 <h4>$<%= item[0].price %>.00</h4>
+                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Contact Seller</a>
+                                    
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog">
+                                
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                    
+                                                        <h4 class="modal-title" >Contact Seller</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!--form-->
+                                                        <form action="/action_page.php" class="form-container">
+                                
+                                                            <b><label for="Name">Name</label></b>
+                                                            <br />
+                                                            <input class="form-control" id="name" type="text" placeholder="e.g. Jane Doe" name="name"
+                                                                required>
+                                                            <br />
+                                                            <b><label for="Name">Product Name</label></b>
+                                                            <br />
+                                                            <input class="form-control" id="pname" type="text" placeholder="e.g. calculator"
+                                                                name="pname" required>
+                                                            <br />
+                                                            <b><label for="Location">Location</label></b>
+                                                            <br />
+                                                            <i>*view<a href="https://www.sfsu.edu/~sfsumap/" target="_blank"> campus map</a> to select a
+                                                                meetup location</i>
+                                                            <br />
+                                                            <select name="type" style="width: 460px;" required>
+                                                                <option value="" selected="selected">Select an option</option>
+                                                                <option value="texts">Administration</option>
+                                                                <option value="school supplies">Library, J. P. Leonard </option>
+                                                                <option value="home goods"> Thornton Hall </option>
+                                                            </select>
+                                                            <br />
+                                                            <br />
+                                                            <b><label for="Message1">Message</label></b>
+                                                            <textarea class="form-control" id="textarea1" rows="3" placeholder="Your Message"
+                                                                required></textarea>
+                                                            <br />
+                                                            <button class="btn btn-info btn-md" type="submit">Contact Seller</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                
+                                            </div>
+                                        </div>
                             </div>
                        </div>
                 </div>
-            </div>
+           </div>
         </div>
         
         <!--col-md-6-->
 
-        <div class="col-md-3">
-            <!--col-md-3-->
-
-        </div>
         <!--col-md-3-->
     </div>
-    <div class="row mt-5">
+    <!--Recommended items-->
+  
+    <div class="row" style="margin-top: 50px;">
         <div class="col-md-3">
-            1 of 3
         </div>
         <div class="col-md-6">
             <div class="card-deck">
@@ -86,8 +138,9 @@
             </div>
         </div>
         <div class="col-md-3">
-            3 of 3
         </div>
     </div>
-    </div>
+</div>
+ <% include layout/footer %>
 </body>
+</html>
