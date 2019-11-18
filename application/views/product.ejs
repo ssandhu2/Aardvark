@@ -18,6 +18,13 @@
             <img src="https://via.placeholder.com/500" class="rounded"></div>
         <div class="col-md-3">
             <div class="card h-100">
+
+                <!-- TO ACCESS item ARRAY FROM BACKEND.  -->
+                <h1><%= item[0].name %></h1>
+                <h1><%= item[0].price %></h1>
+                <img src="data:itemImage/jpg;base64,<%= img %>" alt="<%= item[0].name %>" class="" style="width:60px;"/>
+                <!-- ONLY 1 OBJECT HENCE INDEX[0] -->
+
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
