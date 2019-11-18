@@ -1,134 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include layout/header %>
-  <body>
+<% include layout/header %>
+
+<body>
     <div>
-      <% include layout/navbar %>
+        <% include layout/navbar %>
     </div>
     <br />
     <br />
 
     <div class="container">
-      <div class="row" style="margin-top: 70px;">
-        <div class="p-3 w-75 border border-secondary" style="margin: auto;">
-          <div class="col-sm-12">
-            <p style="text-align: center; font-size: 20px; word-spacing: 10px;">
-              Textbooks &#9670; School Supplies &#9670; Homegoods
-            </p>
-          </div>
+        <div class="row" style="margin-top: 70px;">
+            <div class="p-3 w-75 border border-secondary" style="margin: auto;">
+                <div class="col-sm-12">
+                        <form method="post" action="searchResults" style="text-align: center; font-size: 20px; ">
+                            <% let searchTerm = ""; %>
+                            <button class="btn" type="submit" name="type" value="texts" style="font-size: 20px;word-spacing: 10px;">
+                                Textbooks
+                            </button>
+                            <button class="btn" type="submit" name="type" value="school supplies" style="font-size: 20px;word-spacing: 10px;">
+                                    &#9670; School Supplies
+                            </button>
+                            <button class="btn" type="submit" name="type" value="home goods" style="font-size: 20px; word-spacing: 10px;">
+                                    &#9670; Homegoods
+                            </button>
+                            <input type="hidden" id="search" name="search" value="<%= searchTerm %>" />
+                        
+                        </form>
+                </div>
+            </div>
+            <br />
+            <div class="p-3 w-75 border border-secondary" style="margin: auto; margin-top: 20px;">
+                <div class="col-sm-12">
+                    <p style="text-align: center; font-size: 20px;">
+                        Buy and Sell affordable, accessible goods for SFSU students
+                    </p>
+                </div>
+            </div>
         </div>
-        <br />
-        <div
-          class="p-3 w-75 border border-secondary"
-          style="margin: auto; margin-top: 20px;"
-        >
-          <div class="col-sm-12">
-            <p style="text-align: center; font-size: 20px;">
-              Buy and Sell affordable, accessible goods for SFSU students
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!--Carousel-->
     <div id="carousel">
-      <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="inam" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;margin: auto;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="inam" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;margin: auto;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
+
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
 
-                                    </div>
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
+                                                </div>
 
                                             </div>
 
                                         </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
 
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                        <div class="carousel-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;margin: auto;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-sm-12 col-lg-4">
-                                        <div class="card" style="width: 300px;">
-                                            <img src="https://via.placeholder.com/500" class="card-img-top">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Why you should use skin masks ?</h4>
-                                                <p class="card-text">Skin masks help us to make are skin fresh and also
-                                                    they protect our skin from the harm rays of sun</p>
-                                                <button type="button" class="btn btn-warning">Read More</button>
+                                                </div>
 
                                             </div>
 
@@ -138,8 +100,63 @@
 
                                 </div>
 
-                            </div>
 
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;margin: auto;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <div class="card" style="width: 300px;">
+                                                <img src="https://via.placeholder.com/500" class="card-img-top">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Why you should use skin masks ?</h4>
+                                                    <p class="card-text">Skin masks help us to make are skin fresh and
+                                                        also
+                                                        they protect our skin from the harm rays of sun</p>
+                                                    <button type="button" class="btn btn-warning">Read More</button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
 
                         </div>
 
@@ -147,8 +164,6 @@
 
                 </div>
 
-                </div>
-                
                 <a href="#inam" class="carousel-control-prev" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
@@ -164,5 +179,6 @@
 
     <!--Footer-->
     <% include layout/footer %>
-  </body>
+</body>
+
 </html>
