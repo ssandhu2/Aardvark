@@ -7,30 +7,28 @@
         <% include layout/navbar %>
     </div>
     <br/>
-    <div class="container-fluid">
-    <div class="jumbotron">
-        <p>THIS IS THE SEARCH RESULT PAGE.</p>
+<div class="container">
+     <div class="jumbotron">
+        <h4>THIS IS THE RESULTS PAGE</h4>
     </div>
-        <% for(let i=0; i < searchResults.length; i++) { %>   
-            <a style="display:block; color: black;" href="/searchResults/<%= searchResults[i].id %>">
-            <div class="media border p-3">
-            <img src="data:itemImage/jpg;base64,<%= imgblobs[i] %>" alt="<%= searchResults[i].name %>" class="" style="width:60px;"/>
-            <div class="media-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                    <h3 class="col-sm-12" style="text-align:left;">
-                        <%= searchResults[i].name %> 
-                    </div>
-                    <div>
-                        $<%= searchResults[i].price %>.00</h3>
-                    </div>
+<div id="resultStyle">
+<div class="row">
+    <% for(let i=0; i < searchResults.length; i++) { %> 
+        <a style="display:block; color: black;" href="/searchResults/<%= searchResults[i].id %>">
+            <div class="card-deck">
+                <div class="card" style="width:100%">
+                    <img class="card-img-top" src="data:itemImage/jpg;base64,<%= imgblobs[i] %>" alt="<%= searchResults[i].name %>" style="height: 325px;">
+                        <div class="card-block">
+                            <h4 class="card-title"> <%= searchResults[i].name %></h4>
+                                <p class="card-text"><%= searchResults[i].description %></p>
+                                <p class="card-text">$<%= searchResults[i].price %>.00</p>
+                        </div>
                 </div>
-              <p class="col-sm-12"><%= searchResults[i].description %></p>
             </div>
-          </div>
         </a>
-        <% } %>
-    </div>
+   <% } %>
+</div>
+</div>
 </div>
 <% include layout/footer %> 
 </body>
