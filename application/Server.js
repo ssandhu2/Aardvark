@@ -4,11 +4,9 @@ const item_routes = require('./routes/itemRoutes');
 const auth_routes = require('./routes/authRoutes');
 const session = require('express-session');
 const passport = require('passport');
-const expressValidator = require('express-validator')
 require('./config/passport')(passport); // passport config
 
 const app = express();
-// app.use(expressValidator());
 
 // express session
 app.use(
@@ -18,8 +16,6 @@ app.use(
     resave: false,
   }), 
 );
-
-// express-validator for validating login/registration
 
 
 // Passport middleware

@@ -5,15 +5,15 @@ const passport = require('passport');
 
 const passportConfig = (passport) => {
 
-    passport.use(new LocalStrategy( ({usernameField: 'name'})
-        ,(name, password, done) => {
+    passport.use(new LocalStrategy( ({usernameField: 'email'})
+        ,(email, password, done) => {
 
-            db.query('SELECT * FROM user WHERE name = ?', name, (err, result) => {
+            db.query('SELECT * FROM user WHERE email = ?', email, (err, result) => {
 
                 if (err) {
 
                     console.log(err);
-                    return done(null, false, { message: 'Server Error' });
+                    return done(err);
 
                 } else {
 
@@ -23,13 +23,13 @@ const passportConfig = (passport) => {
                     if (!result || result == null || result.length !== 1) {
                         return done(null, false, { message: 'Invalid credentials.' });
                     }
-                    
+
                     if (bcrypt.compareSync(password, result[0].password)){
                         console.log("pass");
                         return done(null, result);
                     } else {
                         console.log("not pass");
-                        return done(null, false, { message: 'Wong password' });
+                        return done(null, false, { message: 'Wrong password' });
                     }
 
                 }

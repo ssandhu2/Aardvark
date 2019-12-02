@@ -16,6 +16,18 @@
       <form class="center" method="POST" action="/auth/register" style="width:90%">
 
         <h1 style="text-align:center; margin-top:20px; "> Create an Account </h1>
+
+        <!-- error messages if invalid input -->
+        <%if (typeof err != 'undefined') { %>
+          <div class="alert alert-danger" style="text-align:left">
+            <ul style="padding-left: 20px;">
+            <% err.forEach(function(error){ %>
+              <li><%= error.msg %></li>
+            <% }) %>
+            </ul>
+          </div>
+        <% } %>
+
         <div class="container">
 
           <div class="form-group col">
@@ -43,13 +55,11 @@
             <input name="phone" class="form-control" id="phone" value="<%= (typeof body != 'undefined' && typeof body.phone != 'undefined') ? body.phone : '' %>" placeholder="415-111-2222">
           </div>
 
-          <!--
           <div class="form-group col">
             <form action="/action_page.php">
-              <input type="checkbox" name="vehicle1" value="Bike"> Accept terms of Agreement<br>
+              <input type="checkbox" name="terms" value="1" > Accept Terms of Agreement<br>
           </div>
-          -->
-
+          
           <div class="form-group col">
             <p class="message"> Already have an account? <a href="/login"> Login </a></p>
             <button type="submit" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 10px;">Register</button>
