@@ -1,11 +1,28 @@
 const express = require("express");
 const about_routes = require('./routes/aboutRoutes');
 const item_routes = require('./routes/itemRoutes');
+const auth_routes = require('./routes/authRoutes');
+const session = require('express-session');
+const passport = require('passport');
+require('./config/passport')(passport); // passport config
 
 const app = express();
-//const router = express.Router();
-//var path = __dirname + '/html/';
 
+// express session
+app.use(
+  session({
+    secret: 'secret',
+    saveUninitialized: false,
+    resave: false,
+  }), 
+);
+
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// setup views folder and view engine
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
@@ -13,19 +30,10 @@ app.engine('html', require('ejs').renderFile);
 // allows to call static items in pulic folder such as images
 app.use(express.static(__dirname + '/public'));
 
-//var path = __dirname + '/html/';
-app.set('views', __dirname + '/views');
-
+// routes
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
-
-app.get('/login', (req, res) => {
-  res.render("login", {page: 'login'});
-});
-
-app.get('/register', (req, res) => {
-  res.render("register", {page: 'register'});
-});
+app.use('/auth', auth_routes);
 
 app.get('/dashboard', (req, res) => {
   res.render('dashboard', { page: 'dashboard' });
