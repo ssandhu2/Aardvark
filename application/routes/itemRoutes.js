@@ -153,7 +153,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 				description: req.body.item_description,
 				price: req.body.price,
 				type: req.body.type,
-				status: '1',
+				status: '0',
 				itemImage: itemImage
 			};
 			console.log(itemImage);
@@ -166,7 +166,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 				description: req.body.item_description,
 				price: req.body.price,
 				type: req.body.type,
-				status: '1',
+				status: '0',
 				itemImage: itemImage
 			};
 			console.log(itemImage);
@@ -180,7 +180,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 				description: req.body.item_description,
 				price: req.body.price,
 				type: req.body.type,
-				status: '1',
+				status: '0',
 				itemImage: itemImage
 			};
 			console.log(itemImage);
