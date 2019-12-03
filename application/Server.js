@@ -39,14 +39,6 @@ app.get('/dashboard', (req, res) => {
   res.render('dashboard', { page: 'dashboard' });
 });
 
-app.get('/inbox', (req, res) => {
-  res.render('inbox', { page: 'inbox' });
-});
-
-app.get('/message', (req, res) => {
-  res.render('message', { page: 'message' });
-});
-
 
 app.get('/sell', (req, res) => {
   res.render("post_new", {page: 'sell'});
