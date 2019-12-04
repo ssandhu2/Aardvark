@@ -23,7 +23,7 @@
                                               <!-- <option value="texts" <%= type == 'texts' ? 'selected' : '' %>>Texts </option> -->
                                               <!-- <option value="school supplies" <%= type == 'school supplies' ? 'selected' : '' %>> School Supplies </option> -->
                                               <!-- <option value="home goods" <%= type == 'home goods' ? 'selected' : '' %>> Home Goods </option> -->
-                                              
+
                                           </select>
                                       </div>
                                       <!--Search Bar-->
@@ -34,6 +34,7 @@
                                       <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                                   </button>
                                   </span>
+
                                   </div>
                               </div>
                           </form>
@@ -42,14 +43,18 @@
                   <!-- Other nav bar items -->
                   <ul class="navbar-nav ml-auto">
                     <!--Need to link these pages-->
+
+                    <li class="nav-item  <% if (page === 'dashboard') { %>active <% } %>">
+                        <a class="nav-link" style="color: white;" href="/dashboard">Dashboard</a>
+                    </li>
                     <li class="nav-item  <% if (page === 'sell') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/sell">Sell</a>
+                        <a class="nav-link" style="color: white;" href="/sell">Post</a>
                     </li>
                     <li class="nav-item  <% if (page === 'login') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/login">Login</a>
+                        <a class="nav-link" style="color: white;" href="/auth/login">Login</a>
                     </li>
                     <li class="nav-item  <% if (page === 'register') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/register">Register</a>
+                        <a class="nav-link" style="color: white;" href="/auth/register">Register</a>
                     </li>
                     <li class="nav-item  <% if (page === 'register') { %>active <% } %>">
                         <a class="nav-link" style="color: white;" href="/auth/register">Register</a>
