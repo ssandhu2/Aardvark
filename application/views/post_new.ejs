@@ -8,7 +8,7 @@
       <% include layout/navbar %>
     </div>
     <br />
-    <div  style="margin: 5%;">
+    <div  style="margin: 4%;">
       <h1>Create Post</h1>
       <form class="center" method="POST" action="searchResults/createItem" enctype="multipart/form-data">
         <div class="form-row">
@@ -17,7 +17,7 @@
 
             <% let itemN = ""; %>
             <input name="nameofitem" type="text" class="form-control" id="nameofitem" placeholder="Name of Item"
-              value="<%= itemN %>" />
+              value="<%= itemN %>" required/>
           </div>
         </div>
 
@@ -25,7 +25,7 @@
         <div class="form-row">
           <div class="form-group col">
             <label for="price">Price</label>
-            <input name="price" type="text" class="form-control" id="price" placeholder="Price" value="<%= itemP %>" />
+            <input name="price" type="text" class="form-control" id="price" placeholder="Price" value="<%= itemP %>" required/>
           </div>
         </div>
 
@@ -33,7 +33,7 @@
         <div class="form-group row">
           <div class="form-group col">
             <label for="category">Category</label>
-            <select id="category" class="form-control">
+            <select id="category" class="form-control" required>
               <option selected>Select</option>
               <option>Text Books</option>
               <option>Home goods</option>

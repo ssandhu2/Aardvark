@@ -63,24 +63,27 @@
                                                             <input class="form-control" id="pname" type="text" placeholder="e.g. calculator"
                                                                 name="pname" required>
                                                             <br />
-                                                            <b><label for="Location">Location</label></b>
+                                                            <b><label for="Location">Meeting Location</label></b>
                                                             <br />
                                                             <i>*view<a href="https://www.sfsu.edu/~sfsumap/" target="_blank"> campus map</a> to select a
                                                                 meetup location</i>
                                                             <br />
-                                                            <select name="type" style="width: 460px;" required>
+
+                                                            <select name="type" class="form-control" required>
                                                                 <option value="" selected="selected">Select an option</option>
                                                                 <option value="texts">Administration</option>
                                                                 <option value="school supplies">Library, J. P. Leonard </option>
                                                                 <option value="home goods"> Thornton Hall </option>
                                                             </select>
-                                                            <br />
+
                                                             <br />
                                                             <b><label for="Message1">Message</label></b>
                                                             <textarea class="form-control" id="textarea1" rows="3" placeholder="Your Message"
                                                                 required></textarea>
                                                             <br />
-                                                            <button class="btn btn-info btn-md" type="submit">Contact Seller</button>
+                                                            <div style="right:0%">
+                                                            <button style="right:0%" class="btn btn-info btn-md" type="submit" >Contact Seller</button>
+                                                        </div>
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
