@@ -59,4 +59,3 @@ app.use("*",function(req,res){
 app.listen(80,function(){
   console.log("Live at Port 80");
 }); 
-//Updated Server.js to solve merging issues
