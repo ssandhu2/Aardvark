@@ -30,9 +30,6 @@ app.engine('html', require('ejs').renderFile);
 // allows to call static items in pulic folder such as images
 app.use(express.static(__dirname + '/public'));
 
-//var path = __dirname + '/html/';
-app.set('views', __dirname + '/views');
-
 // routes
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
