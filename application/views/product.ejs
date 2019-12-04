@@ -7,7 +7,7 @@
 </div>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
     <div class="row justify-content-around" style="margin-top: 70px;">
         <div class="col-sm-4" >
         <h1><%= item[0].name %></h1>
@@ -17,7 +17,7 @@
         </div>
        
             
-        <div class="col-sm-4" style="right:100px">
+        <div class="col-sm-4" style="right:50px">
             <div class="card h-100">
 
                 <!-- TO ACCESS item ARRAY FROM BACKEND.  -->
@@ -36,7 +36,8 @@
                     <!-- <div class=" ml-auto"><a href="#" class="btn btn-primary">Go somewhere</a></div> -->
                     <div class="d-flex mt-auto justify-content-between">
                             <div>
-                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Contact Seller</a>
+                                    <h4>$<%= item[0].price%>.00</h4>
+                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Contact Seller</a>
                                     
                                     <div class="modal fade" id="myModal" role="dialog">
                                             <div class="modal-dialog">
@@ -66,19 +67,23 @@
                                                             <i>*view<a href="https://www.sfsu.edu/~sfsumap/" target="_blank"> campus map</a> to select a
                                                                 meetup location</i>
                                                             <br />
-                                                            <select name="type" style="width: 460px;" required>
+
+                                                            <select name="type" class="form-control" required>
                                                                 <option value="" selected="selected">Select an option</option>
                                                                 <option value="texts">Administration</option>
                                                                 <option value="school supplies">Library, J. P. Leonard </option>
                                                                 <option value="home goods"> Thornton Hall </option>
                                                             </select>
+
                                                             <br />
                                                             <br />
                                                             <b><label for="Message1">Message</label></b>
                                                             <textarea class="form-control" id="textarea1" rows="3" placeholder="Your Message"
                                                                 required></textarea>
                                                             <br />
+                                                            <div style="right:0%">
                                                             <button class="btn btn-info btn-md" type="submit">Contact Seller</button>
+                                                        </div>
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
@@ -93,50 +98,7 @@
                 </div>
            </div>
         </div>
-        
-        <!--col-md-6-->
 
-        <!--col-md-3-->
-    </div>
-    <!--Recommended items-->
-  
-    <div class="row" style="margin-top: 50px;">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
-            <div class="card-deck">
-                <div class="card">
-                    <img src="https://via.placeholder.com/192x108" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Recommended item 1</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/192x108" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Recommended item 2</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                            content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/192x108" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Recommended item 3</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This card has even longer content than the first to show that equal
-                            height action.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-        </div>
     </div>
 </div>
  <% include layout/footer %>

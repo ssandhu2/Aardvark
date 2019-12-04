@@ -3,8 +3,6 @@ const about_routes = require('./routes/aboutRoutes');
 const item_routes = require('./routes/itemRoutes');
 
 const app = express();
-//const router = express.Router();
-//var path = __dirname + '/html/';
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -16,6 +14,7 @@ app.use(express.static(__dirname + '/public'));
 //var path = __dirname + '/html/';
 app.set('views', __dirname + '/views');
 
+// routes
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 

@@ -22,7 +22,7 @@
                 class="form-control"
                 id="nameofitem"
                 placeholder="Name of Item"
-                value="<%= itemN %>" />
+                value="<%= itemN %>" required/>
             </div>
           </div>
 
@@ -36,21 +36,21 @@
                 class="form-control"
                 id="price"
                 placeholder="Price"
-                value="<%= itemP %>"
-              />
+                value="<%= itemP %>" required/>
             </div>
           </div>
 
-
-          <div class="input-group-prepend">
+        <div class="form-group row">
+          <div class="form-group col">
             <label for="category">Category</label>
-                        <select name="type">
-              <option value="" selected="selected">All</option>
-              <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
-              <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-              <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
+            <select id="category" class="form-control" required>
+              <option selected>Select</option>
+              <option>Texts</option>
+              <option>Home Goods</option>
+              <option>School Supplies</option>
           </select>
           </div>
+        </div>
 
           <div class="form-group-col">
             <label for="item_description">Description:</label>
@@ -68,11 +68,10 @@
 
           <br />
           <!--upload image-->
+          <label for="item-image">Image</label>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01"
-                >Upload</span
-              >
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
               <input
@@ -81,11 +80,8 @@
                 name ="itemImage"
                 class="custom-file-input"
                 id="itemImage"
-                aria-describedby="inputGroupFileAddon01"
-              />
-              <label class="custom-file-label" for="itemImage"
-                >Choose file</label
-              >
+                aria-describedby="inputGroupFileAddon01"/>
+              <label class="custom-file-label" for="itemImage">Choose file</label>
             </div>
           </div>
           <script>

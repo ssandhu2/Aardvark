@@ -11,11 +11,29 @@ html {
 }
 body{
     margin-bottom: 60px;
+    font-family: 'Quicksand' sans-serif;
 }
 
 .carousel{
   margin-top: 40px;
 }
 
+.card-deck{
+  width: 325px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
 
+#resultStyle{
+  margin-left: 20px;
+  margin-right: 0;
+}
 
+#search{
+  width:800px;
+  border-radius:4px;
+}
+
+.navbar{
+  min-height: 80px;
+}
