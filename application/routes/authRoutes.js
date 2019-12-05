@@ -5,11 +5,10 @@ const bodyparser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { validationResult } = require('express-validator')
-const { validateReg } = require('../model/validator.js');
+const { validateReg, loggedIn } = require('../model/validator.js');
 
 // parser to parse request body form-data
 let parser = bodyparser.urlencoded({extended: false});
-
 authRouter.use(parser);
 
 // get login page
@@ -19,7 +18,9 @@ authRouter.get('/login', (req, res) => {
 
 // post to login page, use passport middleware for authentication
 authRouter.post('/login', (req, res, next) => {
+	// local auth - uses Strategy defined in passport.js to validate
 	passport.authenticate('local', {
+		// redirection after login
 		successRedirect: '/dashboard/',
 		failureRedirect: '/auth/login',
 		failureFlash: false,
@@ -37,14 +38,13 @@ authRouter.get('/register', (req, res) => {
     res.render("register", {page: 'register'});
 });
 
-// post to register page
+// post to register page, validateReg() uses express-validator to check input
 authRouter.post('/register', validateReg() ,parser, (req, res) => {
 
-	console.log("post to register page!");
+	// validationResult() is part of express-validator, which is used in validateReg
+	const err = validationResult(req).array({ onlyFirstError: true });
 
 	// render register page again but with errors
-	const err = validationResult(req).array({ onlyFirstError: true });
-	
 	if (err.length !== 0) {
 		res.render("register", {
 			page: "register",
@@ -67,6 +67,7 @@ authRouter.post('/register', validateReg() ,parser, (req, res) => {
 		role: 'user',
 	};
 
+	// insert user into db, redirects to reg page if fail, login page if success
 	db.query("INSERT INTO user SET ?", data, (err, result) => {
 		if (err) {
 			console.log(err);

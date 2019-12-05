@@ -1,7 +1,10 @@
 const { check } = require('express-validator');
+const passport = require('passport');
 
+// validation for every input field in registration form
 module.exports.validateReg = () => [
 
+	// check input field conditions, returns the corresponding message if conditions not met
 	check('name', 'Name must be only characters & spaces, and be 2-16 characters long.')
 		.exists().matches(/^[a-z ]+$/i).isLength({ min: 2, max: 16 }),
 	check('email', 'Invalid email address.')
@@ -20,3 +23,11 @@ module.exports.validateReg = () => [
 		.exists().equals('1'),
 
 ];
+
+module.exports.loggedIn = (req, res, next) => {
+	if ( req.isAuthenticated() ){
+		return next();
+	} else {
+		res.redirect('/auth/login', {page: 'login'} );
+	}
+}
