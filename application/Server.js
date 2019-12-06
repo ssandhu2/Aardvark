@@ -17,8 +17,7 @@ app.use(
   }), 
 );
 
-
-// Passport middleware
+// Passport middleware for auth
 app.use(passport.initialize());
 app.use(passport.session());
 
