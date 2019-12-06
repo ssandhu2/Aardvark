@@ -106,10 +106,10 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
             req.result = "";
         }
 
-		req.result = result;
-		console.log(req.result);
+			req.result = result;
+			console.log(req.result);
 
-		let imgBlob = new Buffer( result[0].itemImage, 'binary').toString('base64');
+			let imgBlob = new Buffer( result[0].itemImage, 'binary').toString('base64');
 
         res.render("product", {
             page: "home",
@@ -172,7 +172,6 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 			console.log(itemImage);
 			db.query("INSERT INTO item SET ?", data);
 		}
-
 		else if (req.body.type == 'home goods'){
 			let data = {
 				userId: '3',
@@ -190,6 +189,12 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 		res.redirect('/');
 	})();
 });
+
+//for routing user product page--> contact page
+/* app.post('contact', function(req, res){
+	console.log(req.body.Contact);
+	 res.redirect('/');
+}) */
 
 // for testing
 sqlRouter.route('/tables').get((req, res) => {
