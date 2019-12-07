@@ -2,9 +2,11 @@ const express = require("express");
 const about_routes = require('./routes/aboutRoutes');
 const item_routes = require('./routes/itemRoutes');
 const auth_routes = require('./routes/authRoutes');
+const dash_routes = require('./routes/dashboardRoutes');
 const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport); // passport config
+const { loggedIn } = require('./model/validator'); // checks if user is logged in
 
 const app = express();
 
@@ -33,11 +35,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 app.use('/auth', auth_routes);
-
-app.get('/dashboard', (req, res) => {
-  res.render('dashboard', { page: 'dashboard' });
-});
-
+app.use('/dashboard', dash_routes);
 
 app.get('/sell', (req, res) => {
   res.render("post_new", {page: 'sell'});
