@@ -20,21 +20,23 @@ body{
 }
 
 .card-deck{
-  width: 325px;
-  margin-top: 20px;
-  margin-right: 20px;
-}
-
-#resultStyle{
+  width:325px; 
+  margin-top: 20px; 
+  margin-right: 20px; 
   margin-left: 20px;
-  margin-right: 0;
+
+}
+#resultStyle{
+  margin-left:20px;
+  margin-right:0;
 }
 
 #search{
   width:800px;
   border-radius:4px;
-}
 
+}
 .navbar{
   min-height: 80px;
 }
+
