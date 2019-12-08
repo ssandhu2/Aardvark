@@ -71,7 +71,6 @@ sqlRouter.post("/", parser, (req,res) => {
         req.type = type;
 
 		console.log(`searchTerm: ${searchTerm}, type: ${type}`);
-		//console.log(result);
 
         // searchTerm for what was typed into the search bar
         // type for the type selected, null if All Types
@@ -148,7 +147,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 
 		if(req.body.type == 'texts'){
 			let data = {
-				userId: '1',
+				userId: req.user.id,
 				name: req.body.nameofitem,
 				description: req.body.item_description,
 				price: req.body.price,
@@ -161,7 +160,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 		}
 		else if (req.body.type == 'school supplies'){
 			let data = {
-				userId: '2',
+				userId: req.user.id,
 				name: req.body.nameofitem,
 				description: req.body.item_description,
 				price: req.body.price,
@@ -175,7 +174,7 @@ sqlRouter.post("/createItem", parser, imgUpload.single('itemImage'), (req,res)
 
 		else if (req.body.type == 'home goods'){
 			let data = {
-				userId: '3',
+				userId: req.user.id,
 				name: req.body.nameofitem,
 				description: req.body.item_description,
 				price: req.body.price,

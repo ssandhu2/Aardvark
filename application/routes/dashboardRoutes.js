@@ -11,6 +11,11 @@ dashboardRouter.use(parser);
 
 // get login page
 dashboardRouter.get('/', loggedIn, (req, res) => {
+
+    console.log("\n\nD A S H B O A R D\nCurrent logged in user:")
+    console.log(req.user);
+    console.log(`Current user's id: ${req.user.id}`)
+
     res.render('dashboard', {page: 'dashboard'});
 });
 

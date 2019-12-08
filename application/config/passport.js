@@ -14,12 +14,9 @@ const passportConfig = (passport) => {
             db.query('SELECT * FROM user WHERE email = ?', email, (err, result) => {
 
                 if (err) {
-
                     console.log(err);
                     return done(err);
-
                 } else {
-
                     console.log("Login, db query result: ")
                     console.log(result);
                     
@@ -30,10 +27,8 @@ const passportConfig = (passport) => {
 
                     // user exist, compare password
                     if (bcrypt.compareSync(password, result[0].password)){
-                        console.log("pass");
-                        return done(null, result);
+                        return done(null, result[0]); // result[0] returns 1 user, result returns an array of 1 user
                     } else {
-                        console.log("not pass");
                         return done(null, false, { message: 'Wrong password' });
                     }
 
