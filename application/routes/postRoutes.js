@@ -5,7 +5,7 @@ const bodyparser = require('body-parser');
 const passport = require('passport');
 const { loggedIn } = require('../model/validator.js'); // to check if user is logged in 
 
-let parser = bodyparser.urlencoded({ extended: false });
+let parser = bodyparser.urlencoded({ extended: true });
 postRouter.use(parser);
 // get post page
 postRouter.get('/', loggedIn, (req, res) => {
@@ -34,8 +34,13 @@ postRouter.get('/edit', loggedIn, (req, res) => {
 
 
 //when new post submitted
-postRouter.post ("/", loggedIn, parser, (req, res) => {
-    
+postRouter.post ("/", loggedIn, parser,  function(req, res){
+
+    // const { item_name, item_price, item_type, item_description, item_photo} = req.body;
+    console.log(req.body.item.name)
+
+    //testing
+    res.redirect('post')
 });
 
 module.exports = postRouter;

@@ -39,7 +39,10 @@ authRouter.get('/logout', (req, res) => {
 
 // get register page
 authRouter.get('/register', (req, res) => {
-	res.render("register", { page: 'register' });
+	res.render("register", { 
+		page: 'register',
+		loggedin: req.user 
+	});
 });
 
 // post to register page, validateReg() uses express-validator to check input
