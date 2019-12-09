@@ -11,17 +11,12 @@
         <br />
         <h1>Edit Post</h1>
         <form class="center" style="width:75%">
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="productname">Item</label>
-                    <input type="text" class="form-control" id="productname" placeholder="Name of Item">
-                </div>
-            </div>
+            <h1><%= item_name%></h1>
 
             <div class="form-row">
                 <div class="form-group col">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" placeholder="Price">
+                    <input type="text" class="form-control" id="price" value="<%= item_price%>">
                 </div>
             </div>
 
@@ -29,7 +24,7 @@
                 <div class="form-group col">
                     <label for="category">Category</label>
                     <select id="category" class="form-control">
-                        <option selected>Select</option>
+                        <option selected><%= item_category%></option>
                         <option>Text Books</option>
                         <option>Home goods</option>
                         <option>School Supplies</option>
@@ -39,7 +34,7 @@
 
             <div class="form-row">
                 <label for="item_desciption">Desciption</label>
-                <input type="text" class="form-control" id="item_desciption" placeholder="Desciption">
+                <input type="text" class="form-control" id="item_desciption" value="<%= item_description%>">
             </div>
 
             <br />

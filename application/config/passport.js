@@ -22,6 +22,7 @@ const passportConfig = (passport) => {
                     
                     // user does not exist
                     if (!result || result == null || result.length !== 1) {
+                        console.log("Invalid Credentials")
                         return done(null, false, { message: 'Invalid credentials.' });
                     }
 
