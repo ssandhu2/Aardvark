@@ -8,8 +8,9 @@ const passport = require('passport');
 require('./config/passport')(passport); // passport config
 const { loggedIn } = require('./model/validator'); // checks if user is logged in
 
+//main server variables
 const app = express();
-
+const port = 80;
 // express session
 app.use(
   session({
@@ -53,6 +54,6 @@ app.use("*",function(req,res){
   res.render("404.html");
 });
 
-app.listen(80,function(){
-  console.log("Live at Port 80");
+app.listen(port,function(){
+  console.log("Live at Port " + port);
 });
