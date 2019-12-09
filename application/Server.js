@@ -40,13 +40,10 @@ app.use('/auth', auth_routes);
 app.use('/dashboard', dash_routes);
 app.use('/post', post_routes);
 
-// app.get('/post', loggedIn, (req, res) => {
-//   res.render("post_new",
-//     {
-//       page: 'post',
-//       loggedin: req.user
-//     });
-// });
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
 
 app.use("/contact", (req, res) => {
   res.render("contact",
