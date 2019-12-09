@@ -3,6 +3,7 @@ const about_routes = require('./routes/aboutRoutes');
 const item_routes = require('./routes/itemRoutes');
 const auth_routes = require('./routes/authRoutes');
 const dash_routes = require('./routes/dashboardRoutes');
+const post_routes = require('./routes/postRoutes');
 const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport); // passport config
@@ -37,14 +38,15 @@ app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 app.use('/auth', auth_routes);
 app.use('/dashboard', dash_routes);
+app.use('/post', post_routes);
 
-app.get('/sell', loggedIn, (req, res) => {
-  res.render("post_new",
-    {
-      page: 'sell',
-      loggedin: req.user
-    });
-});
+// app.get('/post', loggedIn, (req, res) => {
+//   res.render("post_new",
+//     {
+//       page: 'post',
+//       loggedin: req.user
+//     });
+// });
 
 app.use("/contact", (req, res) => {
   res.render("contact",
