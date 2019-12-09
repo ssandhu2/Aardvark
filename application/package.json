@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node Server.js",
-    "run": "nodejs Server.js"
+    "serverstart": "nodejs Server.js",
+    "devstart": "nodemon Server.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.7",

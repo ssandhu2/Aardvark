@@ -3,20 +3,22 @@ const about_routes = require('./routes/aboutRoutes');
 const item_routes = require('./routes/itemRoutes');
 const auth_routes = require('./routes/authRoutes');
 const dash_routes = require('./routes/dashboardRoutes');
+const post_routes = require('./routes/postRoutes');
 const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport); // passport config
-const { loggedIn } = require('./model/validator'); // checks if user is logged in
+const { loggedIn } = require('./model/validator.js'); // to check if user is logged in 
 
+//main server variables
 const app = express();
-
+const port = 80;
 // express session
 app.use(
   session({
     secret: 'secret',
     saveUninitialized: false,
     resave: false,
-  }), 
+  }),
 );
 
 // Passport middleware for auth
@@ -36,23 +38,33 @@ app.use('/about', about_routes);
 app.use('/searchResults', item_routes);
 app.use('/auth', auth_routes);
 app.use('/dashboard', dash_routes);
+app.use('/post', post_routes);
 
-app.get('/sell', (req, res) => {
-  res.render("post_new", {page: 'sell'});
+app.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
 });
 
 app.use("/contact", (req, res) => {
-  res.render("contact", {page: 'contact'});
+  res.render("contact",
+    {
+      page: 'contact',
+      loggedin: req.user
+    });
 });
 
-app.use("/",function(req,res){
-  res.render("index", {page: 'home'});
+app.use("/", function (req, res) {
+  res.render("index",
+    {
+      page: 'home',
+      loggedin: req.user
+    });
 });
 
-app.use("*",function(req,res){
+app.use("*", function (req, res) {
   res.render("404.html");
 });
 
-app.listen(80,function(){
-  console.log("Live at Port 80");
+app.listen(port, function () {
+  console.log("Live at Port " + port);
 });
