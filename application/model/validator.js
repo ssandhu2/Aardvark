@@ -26,8 +26,10 @@ module.exports.validateReg = () => [
 
 module.exports.loggedIn = (req, res, next) => {
 	if ( req.isAuthenticated() ){
+		res.locals.login = req.isAuthenticated;
 		return next();
 	} else {
 		res.redirect('/auth/login');
 	}
 }
+
