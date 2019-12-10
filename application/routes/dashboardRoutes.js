@@ -22,4 +22,19 @@ dashboardRouter.get('/', loggedIn, (req, res) => {
         });
 });
 
+dashboardRouter.post("/item/:id/message", loggedIn, parser, (req, res) => {
+	console.log("USER ID IS: " + req.user.id+ " ITEM ID " + req.params.id + " meeting location is " + req.body.meetingLoc + " in the MESSSAGE "  + req.body.contentBody);
+	let data = {
+		user_id: req.user.id,
+		item_id: req.params.id,
+		meeting_location: req.body.meetingLoc,
+		content: req.body.contentBody
+};
+db.query("INSERT INTO message SET ?", data);
+   res.redirect('/');
+});
+
+
+
+
 module.exports = dashboardRouter;

@@ -10,12 +10,12 @@
         <div class="container-fluid d-flex flex-column grow">
     <div class="row justify-content-around" style="margin-top: 200px;">
         <div class="col-sm-4" >
-        
-          
-            <img src="data:itemImage/jpg;base64,<%= img %>" alt="<%= item[0].name %>" class="" style="width: 600px; height: 600px; "/>  
+
+
+            <img src="data:itemImage/jpg;base64,<%= img %>" alt="<%= item[0].name %>" class="" style="width: 600px; height: 600px; "/>
         </div>
-       
-            
+
+
         <div class="col-sm-4">
             <div class="card h-100" style="font-family:Verdana; font-size:24px; width: 600px;  ">
 
@@ -32,85 +32,44 @@
                         ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
                         in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
                         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        
+
                     <!-- <div class=" ml-auto"><a href="#" class="btn btn-primary">Go somewhere</a></div> -->
-                   
+
 
 
                 </div>
            </div>
         </div>
 
-        
+
 
                 <div class="col-sm-4">
                     <div class=" card text-center h-100" style="font-family:Verdana; width: 600px;">
                      <h4 style="margin-top: 100px;">$<%= item[0].price %>.00</h4>
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin-top: 50px;">Contact Seller</a>
-                        
-                        <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-                    
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                        
-                                            <h4 class="modal-title" >Contact Seller</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!--form-->
-                                            <form action="/action_page.php" class="form-container">
-                    
-                                                <b><label for="Name">Name</label></b>
-                                                <br />
-                                                <input class="form-control" id="name" type="text" placeholder="e.g. Jane Doe" name="name"
-                                                    required>
-                                                <br />
-                                                <b><label for="Name">Product Name</label></b>
-                                                <br />
-                                                <input class="form-control" id="pname" type="text" placeholder="e.g. calculator"
-                                                    name="pname" required>
-                                                <br />
-                                                <b><label for="Location">Meeting Location</label></b>
-                                                <br />
-                                                <i>*view<a href="https://www.sfsu.edu/~sfsumap/" target="_blank"> campus map</a> to select a
-                                                    meetup location</i>
-                                                <br />
+                        <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactSeller" style="margin-top: 50px;">Contact Seller</a> -->
 
-                                                <select name="type" class="form-control" required>
-                                                    <option value="" selected="selected">Select an option</option>
-                                                    <option value="texts">Administration</option>
-                                                    <option value="school supplies">Library, J. P. Leonard </option>
-                                                    <option value="home goods"> Thornton Hall </option>
-                                                </select>
+						<button style="border-radius:0;" 
+						onclick="message(<%= item[0].id %>)"
+						type="button"
+						class="btn btn-primary"
+						>Contact</button>
 
-                                                <br />
-                                                <b><label for="Message1">Message</label></b>
-                                                <textarea class="form-control" id="textarea1" rows="3" placeholder="Your Message"
-                                                    required></textarea>
-                                                <br />
-                                                <div style="right:0%">
-                                                <button style="right:0%" class="btn btn-info btn-md" type="submit" >Contact Seller</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                    
-                                </div>
-                            </div>
+
+
+
                 </div>
 
 
 
 
             </div>
-           
-        
+
+
     </div>
 </div>
+
+
+
  <% include layout/footer %>
 </body>
 </html>
