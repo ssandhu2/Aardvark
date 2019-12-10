@@ -44,10 +44,11 @@
 
 <script>
 
+//when the user click contact seller run the function below and make a post request to insert the message into the db
 $('#onHitMessage').click(() => {
         setSending();
 
-        var jqxhr = $.post( "/dashboard/item/" + $('#itemId').val() + "/message",
+        var mess = $.post( "/dashboard/item/" + $('#itemId').val() + "/message",
         {
 			contentBody: $('#contentBody').val(),
 			meetingLoc: $('#meetingLoc').val()
@@ -69,14 +70,17 @@ $('#onHitMessage').click(() => {
       function setSendingDone(){
 		  $('#onHitMessage').attr("disabled", false);
 		  $('#onHitMessage').html('Send Message');
-      }
+	  }
+
+
+	  //message function is run when the user clicks on Contact Seller button in the product.ejs page
       function message(item_id){
 		<% if (loggedin) {%>
           setSendingDone();
           $('#itemId').val(item_id);
 		  $('#contactSeller').modal('show');
 		  <% } else { %>
-		  $('#loginModal').modal('show');
+		  window.location = "/auth/login";
 		  <% } %>
       }
 
