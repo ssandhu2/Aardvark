@@ -10,7 +10,7 @@
     <br />
     <div  style="margin: 4%;">
       <h1>Create Post</h1>
-      <form class="center" method="POST" action="searchResults/createItem" enctype="multipart/form-data">
+      <form class="center" method="POST" action="/post" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group col">
             <label for="productname">Item</label>
@@ -33,12 +33,19 @@
         <div class="form-group row">
           <div class="form-group col">
             <label for="category">Category</label>
-            <select id="category" class="form-control" required>
+            <!-- <select name = "type" id="category" class="form-control" required>
               <option selected>Select</option>
               <option>Text Books</option>
-              <option>Home goods</option>
+              <option>Home Goods</option>
               <option>School Supplies</option>
-            </select>
+			</select> -->
+
+			<select name="type" id="category" class="form-control" required>
+				<option value="" selected="selected">All</option>
+				<option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
+				<option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
+				<option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
+			</select>
           </div>
         </div>
 
