@@ -1,3 +1,91 @@
+<div class="modal fade" id="contactSeller" tabindex="-1" role="dialog" aria-labelledby="contactSellerModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h4 class="modal-title" id="modalLongTitle">Contact Seller</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+				</div>
+					<!--form-->
+					<form class="form" role="form" autocomplete="off" action="/dashboard/item/message" method="post">
+						<input type="hidden" id="itemId"/>
+						<div class="modal-body">
+								<b><label for="Location">Meeting Location</label></b>
+								<br />
+								<i>*view<a href="https://www.sfsu.edu/~sfsumap/" target="_blank"> campus map</a> to select a
+									meetup location</i>
+								<br />
+								<select name="meetingLoc" id ="meetingLoc" class="form-control" required>
+									<option value="" selected="selected">Select an option</option>
+									<option value="admin">Administration</option>
+									<option value="library">Library, J. P. Leonard </option>
+									<option value="thornton"> Thornton Hall </option>
+								</select>
+								<br />
+
+								<textarea class="form-control" id="contentBody" rows="3" placeholder="Your Message"
+									required></textarea>
+					</div>
+
+					<div class="modal-footer">
+							<button style="right:0%" class="btn btn-primary" type="button" id = "onHitMessage" >Contact Seller</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+<script>
+
+//when the user click contact seller run the function below and make a post request to insert the message into the db
+$('#onHitMessage').click(() => {
+        setSending();
+
+        var mess = $.post( "/dashboard/item/" + $('#itemId').val() + "/message",
+        {
+			contentBody: $('#contentBody').val(),
+			meetingLoc: $('#meetingLoc').val()
+        },
+         function() {
+			 alert( "Message sent!" );
+			 $('#contactSeller').modal('hide');
+        })
+        .fail(function() {
+			alert( "Error sending message!" );
+        })
+        .always(function() {
+        });
+	  });
+	  function setSending(){
+		  $('#onHitMessage').attr("disabled", true);
+		  $('#onHitMessage').html('<i class="fa fa-spinner fa-spin"></i>');
+      }
+      function setSendingDone(){
+		  $('#onHitMessage').attr("disabled", false);
+		  $('#onHitMessage').html('Send Message');
+	  }
+
+
+	  //message function is run when the user clicks on Contact Seller button in the product.ejs page
+      function message(item_id){
+		<% if (loggedin) {%>
+          setSendingDone();
+          $('#itemId').val(item_id);
+		  $('#contactSeller').modal('show');
+		  <% } else { %>
+		  window.location = "/auth/login";
+		  <% } %>
+      }
+
+	</script>
+
 <!--footer-->
 <footer class="footer bg-dark">
   <div class="container">
