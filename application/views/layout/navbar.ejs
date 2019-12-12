@@ -1,7 +1,7 @@
 <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
-              <a class="navbar-brand" href="/">Aardvark</a>
+              <a class="navbar-brand" href="/" style="font-family:Market Sans; font-size: 25px;">Aardvark</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                   aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -20,13 +20,15 @@
                                               <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
                                           </select>
                                       </div>
+                                      <!--Search Bar-->
                                       <% let searchTerm = ""; %>
-                                  <input id="search" name="search" type="text" class="form-control form-control-md" placeholder="Enter here to search" maxlength="40" value="<%= searchTerm %>" />
+                                  <input id="search" name="search" type="text" class="form-control" placeholder="Enter here to search" value="<%= searchTerm %>" />
                                   <span class="input-group-prepend">
-                                  <button class="btn btn-primary" type="submit">
-                                      <i class="fa fa-search" aria-hidden="true"></i>
+                                  <button class="btn btn-warning" style="border-radius: 3px;" type="submit">
+                                      <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                                   </button>
                                   </span>
+
                                   </div>
                               </div>
                           </form>
@@ -35,23 +37,24 @@
                   <!-- Other nav bar items -->
                   <ul class="navbar-nav ml-auto">
                     <!--Need to link these pages-->
-
-                    <li class="nav-item  <% if (page === 'message') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/message">Inbox</a>
-
+                    <% if (loggedin) {%>
                     <li class="nav-item  <% if (page === 'dashboard') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/dashboard">Dashboard</a>
-
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
                     </li>
-                    <li class="nav-item  <% if (page === 'sell') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/sell">Sell</a>
+                    <li class="nav-item  <% if (page === 'post') { %>active <% } %>">
+                        <a class="nav-link" href="/post">Post</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <% } else { %>
                     <li class="nav-item  <% if (page === 'login') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/login">Login</a>
+                        <a class="nav-link" href="/auth/login">Login</a>
                     </li>
                     <li class="nav-item  <% if (page === 'register') { %>active <% } %>">
-                        <a class="nav-link" style="color: white;" href="/register">Register</a>
+                        <a class="nav-link" href="/auth/register">Register</a>
                     </li>
+                    <% } %>
                   </ul>
               </div>
           </div>
