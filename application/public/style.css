@@ -40,3 +40,19 @@ body{
   min-height: 80px;
 }
 
+.img-fluid{ 
+  max-width: 100%;
+  height: auto; 
+} 
+
+#row-align{
+  margin-top: 200px;
+}
+#log{
+  margin-top: 150px;
+  border-style:solid;
+  border: 1px solid grey;
+  border-radius: 10px;
+  width:500px;
+  
+}
