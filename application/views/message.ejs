@@ -1,0 +1,54 @@
+<html lang="en">
+<% include layout/header %>
+
+<body>
+  <div>
+
+   <!--message container-->
+   <div class="tab-pane" id="messages">
+		<!--message starts here-->
+		<div>
+
+			  <% let counter = 0; %>
+
+			  <p> Username: <%= initialUsername  %> </p>
+
+				<p>Message: <%= initialMessage %> </p>
+
+			  <% for(var i=0; i < response.length; i++) { %>
+				<p> Username: <%= response[i].name %></p>
+
+					<p>Message: <%= response[i].response_body %> </p>
+
+					<% } %>
+					<form method="post" action="/dashboard/item/<%= paramId %>">
+						<div class="search-inner px-3">
+							<div class="input-group mb-2">
+									<% let searchTerm = ""; %>
+								<!--Search Bar-->
+							<input id="search" name="message" type="text" class="form-control" placeholder="Enter message" value="<%= searchTerm %>" />
+							<span class="input-group-prepend">
+
+							<button class="pure-button pure-button-primary">Send</button>
+
+							</span>
+							</div>
+						</div>
+					</form>
+
+
+
+
+
+
+	</div>
+
+
+</div>
+
+
+
+<% include layout/footer %>
+</body>
+
+</html>
