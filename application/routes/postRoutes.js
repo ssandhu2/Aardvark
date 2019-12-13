@@ -69,7 +69,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
 		let price = req.body.price;
 		let itemType = req.body.type;
 		let itemD = req.body.item_description;
-		console.log(item + " " + price + " " + itemType + " " + itemD);
+		console.log(item + " " + price + " " + itemType + " " + itemD);
 
 		let itemImage;
 		if (req.file) {
