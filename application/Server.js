@@ -11,7 +11,7 @@ const { loggedIn } = require('./model/validator.js'); // to check if user is log
 
 //main server variables
 const app = express();
-const port = 5000;
+const port = 80;
 // express session
 app.use(
   session({
