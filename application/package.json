@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "start": "node Server.js",
-    "serverstart": "nodejs Server.js",
+    "serverstart": "pm2 start Server.js",
+    "serverstop": "pm2 stop Server.js",
     "devstart": "nodemon Server.js"
   },
   "dependencies": {
