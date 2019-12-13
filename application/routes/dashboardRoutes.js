@@ -15,11 +15,28 @@ dashboardRouter.get('/', loggedIn, (req, res) => {
     console.log("\n\nD A S H B O A R D\nCurrent logged in user:")
     console.log(req.user);
 
-    res.render('dashboard',
-        {
-            page: 'dashboard',
-            loggedin: req.user
-        });
+    //query db for user's items
+    let query = `SELECT * FROM item WHERE userId="${req.user.id}"`;
+    db.query(query, (err, result) => {
+		if (err) {
+			console.log(err);
+		}
+
+		req.userItems = result;
+        
+		var imgblobs = [];
+		for (var i = 0; i < result.length; i++) {
+			imgblobs[i] = new Buffer.from(result[i].itemImage,
+				'binary').toString('base64');
+		}
+
+		res.render("dashboard", {
+			page: "home",
+			userItems: req.userItems,
+			imgblobs: imgblobs,
+			loggedin: req.user
+		})
+	});
 });
 
 //to insert message to the db
