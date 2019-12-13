@@ -18,12 +18,32 @@ dashboardRouter.get('/', loggedIn, (req, res) => {
     console.log("\n\nD A S H B O A R D\nCurrent logged in user:")
     console.log(req.user);
 
+    //query db for user's items
+    var imgblobs = [];
+    let itemsquery = `SELECT * FROM item WHERE userId="${req.user.id}"`;
+    db.query(itemsquery, (err, result) => {
+		if (err) {
+			console.log(err);
+		}
+
+		req.userItems = result;
+        
+		
+		for (var i = 0; i < result.length; i++) {
+			imgblobs[i] = new Buffer.from(result[i].itemImage,
+				'binary').toString('base64');
+		}
+	});
     let data = `select item.name as itemName, item.userId, message.mess_id, item_id, message.meeting_location, message.content, user.name, user.id from message join item on item.id = item_id join user on message.user_id = user.id where item_id IN (select id from item where user_Id = "${req.user.id}" or userId = "${req.user.id}")`;
 
         db.query(data, req.user.id, function(err, messages){
             console.log(messages);
             res.render('dashboard', {
+              
                 page: 'dashboard',
+                userItems: req.userItems,
+			          imgblobs: imgblobs,
+			          loggedin: req.user,
                 loggedin: req.user,
                 authorized: req.user.id,
                 messages: messages

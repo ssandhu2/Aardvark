@@ -34,18 +34,40 @@ postRouter.get('/', loggedIn, (req, res) => {
         });
 });
 
-postRouter.get('/edit', loggedIn, (req, res) => {
+postRouter.get('/edit/:id(\\d+)',parser , loggedIn, (req, res) => {
 
 
-    res.render('post_edit',
-        {
-            page: 'post',
-            item_name: '<item-name-here>',
-            item_price: '<item-price-here>',
-            item_category: '<item-category-here>',
-            item_description: '<item-description-here>',
-            loggedin: req.user
-        });
+	let query = `SELECT * FROM item WHERE id="${req.params.id}"`;
+
+	//request item info from db
+	db.query(query, (err, result) => {
+		if (err) {
+			console.log(err);
+		}
+
+		req.itemInfo = result
+		//check only one item recieved from db
+		if (result.length != 1){
+			res.redirect('/dashboard')
+		}
+		item = result[0]
+		//only allow edit to post owner
+		if(req.user.id === item.userId){
+			let imgBlob = new Buffer.from(item.itemImage, 'binary').toString('base64');
+
+			res.render('post_edit',
+				{
+					itemInfo: req.itemInfo,
+					page: 'post',
+					itemName: item.name,
+					itemPrice: item.price,
+					itemCategory: item.type,
+					itemDescription: item.description,
+					itemImage: imgBlob,
+					loggedin: req.user
+				});
+		}
+	});
 });
 
 async function makeImage(path) {
