@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include layout/header %>
-
+ 
 <body>
   <div>
     <div>
@@ -14,13 +14,13 @@
         <div class="form-row">
           <div class="form-group col">
             <label for="productname">Item</label>
-
+ 
             <% let itemN = ""; %>
             <input name="nameofitem" type="text" class="form-control" id="nameofitem" placeholder="Name of Item"
               value="<%= itemN %>" required/>
           </div>
         </div>
-
+ 
         <% let itemP = ""; %>
         <div class="form-row">
           <div class="form-group col">
@@ -28,8 +28,8 @@
             <input name="price" type="text" class="form-control" id="price" placeholder="Price" value="<%= itemP %>" required/>
           </div>
         </div>
-
-
+ 
+ 
         <div class="form-group row">
           <div class="form-group col">
             <label for="category">Category</label>
@@ -38,26 +38,26 @@
               <option>Text Books</option>
               <option>Home Goods</option>
               <option>School Supplies</option>
-			</select> -->
-
-			<select name="type" id="category" class="form-control" required>
-				<option value="" selected="selected">All</option>
-				<option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
-				<option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-				<option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
-			</select>
+            </select> -->
+ 
+            <select name="type" id="category" class="form-control" required>
+                <option selected="selected">Select an option</option>
+                <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
+                <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
+                <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
+            </select>
           </div>
         </div>
-
+ 
         <div class="form-group-col">
           <label for="item_description">Description</label>
           <!-- <input type="text" class="form-control" id="item_description" placeholder="Description"> -->
-
+ 
           <% let itemD = ""; %>
           <textarea class="form-control" rows="5" id="item_description" name="item_description"
             value="<%= itemD %>"></textarea>
         </div>
-
+ 
         <br />
         <!--upload image-->
         <label for="item_image">Image</label>
@@ -83,7 +83,7 @@
             }
           }
         </script>
-
+ 
         <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
           Post
         </button>
@@ -92,5 +92,5 @@
   </div>
   <% include layout/footer %>
 </body>
-
+ 
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include layout/header %>
-
+ 
 <body>
   <div>
     <div>
@@ -16,7 +16,7 @@
         $("#myTab li:eq(0) a").tab('show'); // show 2nd tab on page load
       });
     </script>
-
+ 
     <!--Seller dashboard-->
     <div class="container-fluid" style="margin-top: 110px; margin-bottom: 70px;">
     </div>
@@ -29,12 +29,14 @@
         <li class="nav-item">
           <a href="#messages" class="nav-link" data-toggle="tab">Messages</a>
         </li>
-
+ 
       </ul>
       <!--large container-->
       <div class="tab-content">
+ 
         <!--inventory-->
         <div class="tab-pane fade" id="items">
+ 
           <div class="d-flex flex-column">
             <div class="media border p-3" style="margin: auto;">
               <ul class="list-unstyled">
@@ -69,6 +71,8 @@
                   <img src="..." class="mr-3" alt="..." />
                   <div class="media-body">
                     <h5 class="mt-0 mb-1">List-based media object</h5>
+ 
+ 
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
                     scelerisque ante sollicitudin. Cras purus odio, vestibulum in
                     vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
@@ -109,22 +113,40 @@
               </ul>
             </div>
           </div>
+ 
         </div>
+ 
+ 
+ 
+ 
         <!--message container-->
         <div class="tab-pane fade" id="messages">
           <!--message starts here-->
           <div>
+
+                <% let counter = 0; %>
+
+
+
+                    <% for(var j=0; j < messages.length; j++) { %>
+
+
             <div>
               <div class="media border p-3">
                 <div class="media-body">
+
+                     <a style="display:block; color: black;"  href="/dashboard/<%= messages[j].mess_id %>/<%= messages[j].name %>/<%= messages[j].content %>"  onclick="resp(<%= messages[j].id %>)">
+
                   <div class="d-flex justify-content-between">
                     <div>
                       <h3 class="col-sm-12" style="text-align:left;">
-                        Username: coolguy44
+                        Username: <%= messages[j].name %>
                     </div>
                   </div>
-                  <p>Message: i want to buy item</p>
-                </div>
+				  <p>Message: <%= messages[j].content %> </p>
+				  <p> ITEM NAME: <%= messages[j].itemName %> </p>
+
+				</div>
                 <div class="col-sm-4" style="text-align: right">
                   <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip" title="delete"><i
                       class="fa fa-trash-o"></i></a>
@@ -132,64 +154,16 @@
               </div>
             </div>
 
-            <div class="media border p-3">
-              <div class="media-body">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h3 class="col-sm-12" style="text-align:left;">
-                      Username: sfboy12
-                  </div>
-                </div>
-                <p>Message: cool</p>
-              </div>
-              <div class="col-sm-4" style="text-align: right">
-                  <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip"
-                      title="delete"><i class="fa fa-trash-o"></i></a>
-              </div>
-            </div>
+            </a>
 
-
-
-            <div class="media border p-3">
-              <div class="media-body">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h3 class="col-sm-12" style="text-align:left;">
-                      Username: coolguy44
-                  </div>
-                </div>
-                <p>Message: can we haggle price?</p>
-              </div>
-              <div class="col-sm-4" style="text-align: right">
-                  <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip"
-                      title="delete"><i class="fa fa-trash-o"></i></a>
-              </div>
-            </div>
-
-
-
-            <div class="media border p-3">
-              <div class="media-body">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h3 class="col-sm-12" style="text-align:left;">
-                      Username: sfboy12
-                  </div>
-                </div>
-                <p>Message: how much were you thinking</p>
-              </div>
-              <div class="col-sm-4" style="text-align: right">
-                  <a href="#" class="btn btn-secondary btn-circle" data-toggle="tooltip"
-                      title="delete"><i class="fa fa-trash-o"></i></a>
-              </div>
-            </div>
-
+            <% } %>
           </div>
         </div>
 
         <!--this is where message ends-->
       </div>
     </div>
+ 
     <% include layout/footer %>
 </body>
 
