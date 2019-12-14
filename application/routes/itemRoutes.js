@@ -96,7 +96,7 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 		req.result = result;
 		console.log(req.result);
 
-		let imgBlob = new Buffer(result[0].itemImage, 'binary').toString('base64');
+		let imgBlob = new Buffer.from(result[0].itemImage, 'binary').toString('base64');
 
 		res.render("product", {
 			page: "home",
