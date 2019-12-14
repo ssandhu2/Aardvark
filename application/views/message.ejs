@@ -3,11 +3,11 @@
 
 <body>
   <div>
-
+	<% include layout/navbar %>
    <!--message container-->
    <div class="tab-pane" id="messages">
 		<!--message starts here-->
-		<div>
+		<div style="margin-top:100px">
 
 			  <% let counter = 0; %>
 
@@ -21,7 +21,7 @@
 					<p>Message: <%= response[i].response_body %> </p>
 
 					<% } %>
-					<form method="post" action="/dashboard/item/<%= paramId %>">
+					<form method="post" action="/dashboard/item/<%= paramId %>" ">
 						<div class="search-inner px-3">
 							<div class="input-group mb-2">
 									<% let searchTerm = ""; %>

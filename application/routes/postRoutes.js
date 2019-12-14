@@ -27,15 +27,43 @@ app.use(parser);
 
 // get post page
 postRouter.get('/', loggedIn, (req, res) => {
-    res.render('post_new',
-        {
-            page: 'post',
-            loggedin: req.user
-        });
+	res.render('post_new',
+		{
+			page: 'post',
+			loggedin: req.user
+		});
 });
 
-postRouter.get('/edit/:id(\\d+)',parser , loggedIn, (req, res) => {
+//delete item route
+postRouter.get('/edit/delete/:id(\\d+)', parser, loggedIn, (req, res) => {
+	userId = req.user.id;
+	let query = `SELECT * FROM item WHERE id="${req.params.id}"`;
+	db.query(query, (err, result) => {
+		if (err) {
+			console.log(err);
+		}
+		req.itemInfo = result
+		//check only one item recieved from db
+		if (result.length != 1) {
+			res.redirect('/dashboard')
+		}
+		item = result[0]
+		//check if correct user is logged in
+		if (item.userId === userId) {
+			//delete item
+			let query = `delete from item where id="${req.params.id}"`;
+			db.query(query, (err, result) => {
+				if (err) {
+					console.log(err);
+				}
+				res.redirect('/dashboard');
+			});
+		}
+	});
+});
 
+//edit item route
+postRouter.get('/edit/:id(\\d+)', parser, loggedIn, (req, res) => {
 
 	let query = `SELECT * FROM item WHERE id="${req.params.id}"`;
 
@@ -47,18 +75,19 @@ postRouter.get('/edit/:id(\\d+)',parser , loggedIn, (req, res) => {
 
 		req.itemInfo = result
 		//check only one item recieved from db
-		if (result.length != 1){
+		if (result.length != 1) {
 			res.redirect('/dashboard')
 		}
 		item = result[0]
 		//only allow edit to post owner
-		if(req.user.id === item.userId){
+		if (req.user.id === item.userId) {
 			let imgBlob = new Buffer.from(item.itemImage, 'binary').toString('base64');
 
 			res.render('post_edit',
 				{
 					itemInfo: req.itemInfo,
 					page: 'post',
+					itemId: item.id,
 					itemName: item.name,
 					itemPrice: item.price,
 					itemCategory: item.type,
@@ -68,6 +97,30 @@ postRouter.get('/edit/:id(\\d+)',parser , loggedIn, (req, res) => {
 				});
 		}
 	});
+});
+// postRouter.use(parser);
+postRouter.post('/edit/:id(\\d+)', loggedIn, parser, (req, res) => {
+
+	item = req.body.nameofitem;
+	price = req.body.price;
+	type = req.body.type;
+	description = req.body.description
+	console.log(req.body);
+
+	//query to db
+	let query = `update item set name="${item}",
+				price="${price}",
+				type="${type}",
+				description="${description}"
+				 WHERE id="${req.params.id}"`;
+
+	// set item info in db
+	db.query(query, (err, result) => {
+		if (err) {
+			console.log(err);
+		}
+	});
+	res.redirect('/dashboard')
 });
 
 async function makeImage(path) {
@@ -85,7 +138,7 @@ async function makeImage(path) {
 }
 
 //when new post submitted
-postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res)=>{
+postRouter.post("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res) => {
 	(async () => {
 		let item = req.body.nameofitem;
 		let price = req.body.price;
@@ -141,5 +194,6 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
 		res.redirect('/');
 	})();
 });
+
 
 module.exports = postRouter;
