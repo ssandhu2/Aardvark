@@ -29,6 +29,7 @@
         <li class="nav-item">
           <a href="#messages" class="nav-link" data-toggle="tab">Messages</a>
         </li>
+
  
       </ul>
       <!--large container-->
@@ -61,16 +62,11 @@
             </ul>
           </div>
         </div>
- 
- 
+
         <!--message container-->
         <div class="tab-pane fade" id="messages">
           <!--message starts here-->
-
-                    <% for(var j=0; j < messages.length; j++) { %>
-
-
-            <div>
+          <% for(var j=0; j < messages.length; j++) { %>
               <div class="media border p-3">
                 <div class="media-body">
 
@@ -80,7 +76,7 @@
                     <div>
                       <h3 class="col-sm-12" style="text-align:left;">
                         Username: <%= messages[j].name %>
-                    </div>
+                    </div></a>
                   </div>
 				  <p>Message: <%= messages[j].content %> </p>
 				  <p> ITEM NAME: <%= messages[j].itemName %> </p>
