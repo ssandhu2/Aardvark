@@ -64,7 +64,7 @@ sqlRouter.post("/", parser, (req, res) => {
 		// searchResults is the array of items. 
 		var imgblobs = [];
 		for (var i = 0; i < result.length; i++) {
-			imgblobs[i] = new Buffer(result[i].itemImage,
+			imgblobs[i] = new Buffer.from(result[i].itemImage,
 				'binary').toString('base64');
 		}
 
@@ -82,7 +82,7 @@ sqlRouter.post("/", parser, (req, res) => {
 // for single item/product page
 sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 
-	query = `SELECT * FROM item WHERE status=1 AND id=${req.params.id};`;
+	query = `SELECT * FROM item WHERE id=${req.params.id};`;
 
 	console.log(`query for single item: ${query}`);
 
@@ -98,12 +98,24 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 
 		let imgBlob = new Buffer.from(result[0].itemImage, 'binary').toString('base64');
 
-		res.render("product", {
-			page: "home",
-			item: req.result,
-			img: imgBlob,
-			loggedin: req.user
-		})
+		if (req.result[0].status == 1){
+			res.render("product", {
+				page: "home",
+				item: req.result,
+				img: imgBlob,
+				loggedin: req.user
+			})
+		}
+		else if (req.user){
+			if(req.result[0].status == 0 && req.user.id == req.result[0].userId){
+				res.render("product", {
+					page: "home",
+					item: req.result,
+					img: imgBlob,
+					loggedin: req.user
+				})
+			}
+		}
 	})
 })
 
