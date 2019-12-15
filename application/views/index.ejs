@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include layout/header %>
-
 <body>
-    <div>
-        <% include layout/navbar %>
-    </div>
-    <br />
-    <br />
-<div class="container">
-    <div class="jumbotron">
-        <h3 style="text-align: center;">DISCLAIMER: THIS IS NOT A REAL WEBSITE.</h3>
-    </div>
+<div>
+<% include layout/navbar %>
 </div>
-    <!--Carousel-->
+    <div class="container-fluid">
+        <div class="row">
+            <img src="/images/books.jpg" alt="books" id="bg">
+           <div class="centered">
+               <h1 class="hpfont-size">Welcome to Aardvark</h1>
+           </div>
+           <div class="top-right">
+              <h4 style="font-size:25px"><strong>*SFSU Software Engineering Project CSC 648-848, Fall 2019.  For Demonstration Only</strong></h4>
+            </div>
+        </div> 
+    </div>
+  
+
+<br>
+<h1 style="text-align: center">Great Finds for All Students</h1>
+
+<!--Carousel-->
     <div id="carousel">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="inam" class="carousel slide" data-ride="carousel">
@@ -134,22 +142,34 @@
                         </div>
 
                     </div>
-
+                    <!--Carousel buttons-->
+                    <a href="#inam" class="carousel-control-prev" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a href="#inam" class="carousel-control-next" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                
                 </div>
-
-                <a href="#inam" class="carousel-control-prev" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a href="#inam" class="carousel-control-next" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
-
+                    
             </div>
 
         </div>
 
     </div>
 
+
+
+
+
+
+
+
+
+
+   
+
+  
     <!--Footer-->
     <% include layout/footer %>
 </body>

@@ -1,6 +1,7 @@
 html {
   position: relative;
   min-height: 100%;
+
  
 }
 
@@ -13,10 +14,11 @@ html {
 body{
     margin-bottom: 60px;
     font-family: 'Quicksand' sans-serif;
+   
 }
 
 .carousel{
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .card-deck{
@@ -26,16 +28,20 @@ body{
   margin-left: 20px;
 
 }
-#resultStyle{
+#result-style{
   margin-left:20px;
   margin-right:0;
 }
 
 #search{
-  width:800px;
+  width:1000px;
   border-radius:4px;
-
 }
+.input-group{
+  left:60px; 
+}
+
+
 .navbar{
   min-height: 80px;
 }
@@ -48,3 +54,62 @@ body{
 #row-align{
   margin-top: 200px;
 }
+.jumbotron{
+  margin-top:35px;
+}
+
+#bg{
+  /* Full height */
+ 
+  width: 100%;
+  margin-top: 30px;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Half height */
+  height: 800px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.centered {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.hpfont-size{
+  font-size: 100px;
+  font-family: Market Sans;
+}
+
+#home-cards{
+  margin-top: 30px;
+  text-align: center;
+
+}
+.top-right {
+  position: absolute;
+  top: 100px;
+  right: 16px;
+  color:white;
+
+}
+
+hr.style-one {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+
+
+
+
+
+
