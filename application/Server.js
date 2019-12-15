@@ -5,6 +5,8 @@ const auth_routes = require('./routes/authRoutes');
 const dash_routes = require('./routes/dashboardRoutes');
 const post_routes = require('./routes/postRoutes');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 const passport = require('passport');
 require('./config/passport')(passport); // passport config
 const { loggedIn } = require('./model/validator.js'); // to check if user is logged in 
@@ -18,12 +20,14 @@ app.use(
     secret: 'secret',
     saveUninitialized: false,
     resave: false,
+    cookie: { maxAge: 60000 }
   }),
 );
 
 // Passport middleware for auth
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash())
 
 // setup views folder and view engine
 app.set('views', __dirname + '/views');

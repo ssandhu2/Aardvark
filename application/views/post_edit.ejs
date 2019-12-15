@@ -1,81 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <% include layout/header %>
-
+ 
 <body>
+  <div>
     <div>
-        <div>
-            <% include layout/navbar %>
+      <% include layout/navbar %>
+    </div>
+    <br />
+    <div  style="margin: 4%;">
+      <h1>Create Post</h1>
+      <form class="center" method="POST" action="/post/edit/<%= itemId%>">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="productname">Item</label>
+ 
+            <input name="nameofitem" type="text" class="form-control" id="nameofitem"
+              value="<%= itemName %>" required/>
+          </div>
         </div>
-        <br />
-        <div style="margin: 4%;">
-            <h1>Edit Post</h1>
-            <form class="center" method="POST" action="/post" enctype="multipart/form-data">
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="productname">Item</label>
+ 
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="price">Price</label>
+            <input name="price" type="text" class="form-control" id="price" value="<%= itemPrice %>" required/>
+          </div>
+        </div>
+ 
+ 
+        <div class="form-group row">
+          <div class="form-group col">
+            <label for="category">Category</label>
 
-                        <input name="nameofitem" type="text" class="form-control" id="nameofitem"
-                            placeholder="Name of Item" value="<%= itemName%>" required />
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col">
-                        <label for="price">Price</label>
-                        <input name="price" type="text" class="form-control" id="price" value="<%= itemPrice%>"
-                            required />
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <div class="form-group col">
-                        <label for="category">Category</label>
-
-                        <select name="type" id="category" class="form-control" required>
-                            <option value="" selected="selected"><%= itemCategory%></option>
-                            <option value="texts" <% if(type="texts") { %>> <% } %> Texts </option>
-                            <option value="school supplies" <% if(type="school supplies") { %>> <% } %> School Supplies
-                            </option>
-                            <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group-col">
-                    <label for="item_description">Description</label>
-                    <!-- <input type="text" class="form-control" id="item_description" placeholder="Description"> -->
-
-                    <textarea class="form-control" rows="5" id="item_description"
-                        name="item_description"><%= itemDescription%></textarea>
-                </div>
-
-                <br />
-                <!--upload image-->
-                <label for="item_image">Image</label>
-                <div class="row">
-                    <div class="col-sm" style="margin-bottom: 20px">
-                        <img class="card-img-top" src="data:itemImage/jpg;base64,<%= itemImage %>" alt="<%= itemName %>"
-                            style="height: 325px;">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" onchange="readURL(this);" name="itemImage" class="custom-file-input"
-                            id="itemImage" aria-describedby="inputGroupFileAddon01" />
-                        <label class="custom-file-label" for="itemImage">Choose file</label>
-                    </div>
-                </div>
-                <!-- <script>
+ 
+            <select name="type" id="category" class="form-control" required>
+                <option selected="selected">Select an option</option>
+                <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
+                <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
+                <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
+            </select>
+          </div>
+        </div>
+ 
+        <div class="form-group-col">
+          <label for="item_description">Description</label>
+          <!-- <input type="text" class="form-control" id="item_description" placeholder="Description"> -->
+ 
+        
+          <textarea class="form-control" rows="5" id="description" name="description"><%= itemDescription %></textarea>
+        </div>
+ 
+         <br />
+        <!--upload image-->
+        <label for="item_image">Image</label>
+          <div class="row">
+            <div class="col-sm">
+        <img class="card-img-top" src="data:itemImage/jpg;base64,<%= itemImage %>" alt="<%= itemName %>" style="margin-bottom: 15px;">
+       
+      
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+        <!-- <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" onchange="readURL(this);" name="itemImage" class="custom-file-input" id="itemImage"
+              aria-describedby="inputGroupFileAddon01" />
+            <label class="custom-file-label" for="itemImage">Choose file</label>
+          </div>
+        </div>
+        <script>
           function readURL(input) {
             if (input.files && input.files[0]) {
               var reader = new FileReader();
@@ -87,14 +86,14 @@
             }
           }
         </script> -->
-
-                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
-                    Save
-                </button>
-            </form>
-        </div>
+ 
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+          Post
+        </button>
+      </form>
     </div>
-    <% include layout/footer %>
+  </div>
+  <% include layout/footer %>
 </body>
-
+ 
 </html>
