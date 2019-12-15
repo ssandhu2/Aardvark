@@ -64,7 +64,7 @@ sqlRouter.post("/", parser, (req, res) => {
 		// searchResults is the array of items. 
 		var imgblobs = [];
 		for (var i = 0; i < result.length; i++) {
-			imgblobs[i] = new Buffer(result[i].itemImage,
+			imgblobs[i] = new Buffer.from(result[i].itemImage,
 				'binary').toString('base64');
 		}
 
