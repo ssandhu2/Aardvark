@@ -102,6 +102,7 @@ postRouter.get('/edit/:id(\\d+)', parser, loggedIn, (req, res) => {
         }
     });
 });
+
 // postRouter.use(parser);
 postRouter.post('/edit/:id(\\d+)', loggedIn, parser, (req, res) => {
  
@@ -141,7 +142,8 @@ async function makeImage(path) {
     }
 }
  
-//when new post submitted, use imgUpload.single() to accept a single file and upload using multer
+// post new item
+// when new post submitted, use imgUpload.single() to accept a single file and upload using multer
 postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res)=>{ 
     (async () => {
         let item = req.body.nameofitem;
@@ -163,7 +165,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
                 description: req.body.item_description,
                 price: req.body.price,
                 type: req.body.type,
-                status: '1',
+                status: '0',
                 itemImage: itemImage
             };
             console.log(itemImage);
@@ -176,7 +178,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
                 description: req.body.item_description,
                 price: req.body.price,
                 type: req.body.type,
-                status: '1',
+                status: '0',
                 itemImage: itemImage
             };
             console.log(itemImage);
@@ -190,7 +192,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
                 description: req.body.item_description,
                 price: req.body.price,
                 type: req.body.type,
-                status: '1',
+                status: '0',
                 itemImage: itemImage
             };
             console.log(itemImage);
