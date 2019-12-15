@@ -40,11 +40,15 @@
                         <%= item[0].description %>
                     </p>
                     <h4>$<%= item[0].price %>.00</h4>
-
-                    <%if (loggedin.id !== item[0].userId) { %>
+                    <%if (!loggedin) { %>
+                        <button style="border-radius:0;" onclick="message(<%= item[0].id %>)" type="button"
+                            class="btn btn-warning">Contact Seller</button>
+                            <% } %>
+                        <%if (loggedin) {%>
+                        <%if (loggedin.id !== item[0].userId)  {%>
                     <button style="border-radius:0;" onclick="message(<%= item[0].id %>)" type="button"
                         class="btn btn-warning">Contact Seller</button>
-                        <% } %>
+                        <% } %><% } %>
                 </div>
             </div>
             <% include layout/footer %>
