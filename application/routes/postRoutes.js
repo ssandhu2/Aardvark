@@ -103,7 +103,7 @@ postRouter.get('/edit/:id(\\d+)', parser, loggedIn, (req, res) => {
     });
 });
 
-// postRouter.use(parser);
+// edit item (submission)
 postRouter.post('/edit/:id(\\d+)', loggedIn, parser, (req, res) => {
  
     item = req.body.nameofitem;
@@ -198,7 +198,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
             console.log(itemImage);
             db.query("INSERT INTO item SET ?", data);
         }
-        res.redirect('/');
+        res.redirect('/dashboard');
         await unlinkAsync(req.file.path); //delete images from the uploads folder
     })();
 });
