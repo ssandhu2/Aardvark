@@ -103,31 +103,6 @@ postRouter.get('/edit/:id(\\d+)', parser, loggedIn, (req, res) => {
     });
 });
 
-// edit item (submission)
-postRouter.post('/edit/:id(\\d+)', loggedIn, parser, (req, res) => {
- 
-    item = req.body.nameofitem;
-    price = req.body.price;
-    type = req.body.type;
-    description = req.body.description
-    console.log(req.body);
- 
-    //query to db
-    let query = `update item set name="${item}",
-                price="${price}",
-                type="${type}",
-                description="${description}"
-                 WHERE id="${req.params.id}"`;
- 
-    // set item info in db
-    db.query(query, (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-    });
-    res.redirect('/dashboard')
-});
- 
 async function makeImage(path) {
     try {
         const imgBuffer = await Jimp.read(path) //use jimp for image processing
@@ -141,7 +116,58 @@ async function makeImage(path) {
         return 'err';
     }
 }
- 
+
+// edit item (submission)
+postRouter.post('/edit/:id(\\d+)', loggedIn, parser, imgUpload.single('itemImage'), (req, res) => {
+	(async () => {
+
+	let itemImage;
+	if (req.file) {
+		itemImage = await makeImage(req.file.path); //itemImage is created using the makeImage function
+	}
+
+	item = req.body.nameofitem;
+    price = req.body.price;
+    type = req.body.type;
+	description = req.body.description
+	itemImage = itemImage
+
+	console.log("IN EDIT ITEM SUBMISSION ");
+
+	//if the user uploads a new image 
+	if(req.file != null) {
+		let data = {
+			name: req.body.nameofitem,
+			price: req.body.price,
+			type: req.body.type,
+			description: req.body.description,
+			itemImage: itemImage
+		};
+		db.query(`UPDATE item SET ? WHERE id = " ${req.params.id}"`, data);
+	}
+
+	//if the user only updates the fields
+	else if(req.file == null) {
+
+		//query to db
+		  let query = `update item set name="${item}",
+		  price="${price}",
+		  type="${type}",
+		  description="${description}"
+		   WHERE id="${req.params.id}"`;
+		   // set item info in db
+		   db.query(query, (err, result) => {
+			   if (err) {
+					console.log(err);
+				}
+			});
+		}
+	res.redirect('/dashboard')
+	await unlinkAsync(req.file.path); //delete images from the uploads folder
+
+})();
+});
+
 // post new item
 // when new post submitted, use imgUpload.single() to accept a single file and upload using multer
 postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res)=>{ 
