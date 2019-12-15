@@ -11,6 +11,15 @@
 
     <div style="margin-top: 200px"></div>
 
+    <!-- error flash messages if invalid input -->
+    <% if (typeof message != 'undefined' && message != '') { %>
+      <div class="alert alert-danger" style="text-align:left">
+        <ul style="padding-left: 20px;">
+        <%= message %>
+        </ul>
+      </div>
+    <% } %>
+
     <div class="container" style="border-style:solid; border: 1px solid grey; border-radius: 10px; width:500px;">
 
 

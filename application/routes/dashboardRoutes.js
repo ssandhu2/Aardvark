@@ -11,7 +11,7 @@ let parser = bodyparser.urlencoded({ extended: false });
 let app = express();
 app.use(parser);
  
-// get login page
+// get dashboard page
 dashboardRouter.get('/', loggedIn, (req, res) => {
  
     var imgblobs = [];
