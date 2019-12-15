@@ -48,3 +48,20 @@ body{
 #row-align{
   margin-top: 200px;
 }
+
+#log{
+  margin-top: 150px;
+  border-style:solid; 
+  border: 1px solid grey; 
+  border-radius: 10px ; 
+  width:500px;
+}
+
+#reg{
+  margin-top: 150px;
+  border-style:solid; 
+  border: 1px solid grey; 
+  border-radius: 10px ;
+  width:500px;
+
+}
