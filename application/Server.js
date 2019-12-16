@@ -115,13 +115,6 @@ app.use("/", function (req, res) {
     });
 
   });
-  res.render("index",
-    {
-      page: 'home',
-      loggedin: req.user,
-      items: null,
-      itemImages:null
-    });
 });
 
 app.use("*", function (req, res) {

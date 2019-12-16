@@ -1,7 +1,7 @@
 <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
-              <a class="navbar-brand" href="/" style="font-family:Market Sans; font-size: 25px;">Aardvark</a>
+              <a class="navbar-brand" href="/" style="font-family:Market Sans; font-size: 30px;">Aardvark</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                   aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -29,17 +29,19 @@
                                                 <% } %>
                                             <% } %>
                                           </select>
+
                                       </div>
                                       <!-- Search Bar -->
                                       <% let search = ""; if (typeof searchTerm != 'undefined') search = searchTerm; %>
                                   <input id="search" name="search" type="text" class="form-control" placeholder="Enter here to search" value="<%= search %>" />
+
                                   <span class="input-group-prepend">
                                   <button class="btn btn-warning" style="border-radius: 3px;" type="submit">
                                       <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                                   </button>
                                   </span>
-
-                                  </div>
+                                </div>
+                             </div>
                               </div>
                           </form>
                       </header>
