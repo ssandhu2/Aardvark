@@ -37,13 +37,10 @@ body{
 }
 
 #search{
-  width:1000px;
+  width:500px;
   border-radius:4px;
+ 
 }
-.input-group{
-  left:60px; 
-}
-
 
 .navbar{
   min-height: 80px;
@@ -55,7 +52,7 @@ body{
 } 
 
 #row-align{
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .jumbotron{
   margin-top:35px;
@@ -103,28 +100,21 @@ body{
 
 }
 
-hr.style-one {
-    border: 0;
-    height: 1px;
-    background: #333;
-    background-image: linear-gradient(to right, #ccc, #333, #ccc);
-}
-
-
 
 #log{
-  margin-top: 150px;
   border-style:solid; 
   border: 1px solid grey; 
   border-radius: 10px ; 
   width:500px;
+  margin-bottom: 100px;
+  margin-top: 50px;
 }
 
 #reg{
-  margin-top: 150px;
   border-style:solid; 
   border: 1px solid grey; 
   border-radius: 10px ;
   width:500px;
+  margin-bottom:100px;
 
 }
