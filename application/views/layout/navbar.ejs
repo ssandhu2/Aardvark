@@ -32,7 +32,7 @@
 
                                       </div>
                                       <!-- Search Bar -->
-                                      <% let search = ""; if (typeof searchTerm != 'undefined') search = searchTerm; %>
+                                      <% let search = ""; if (locals.searchTerm && typeof searchTerm != 'undefined') search = searchTerm; %>
                                   <input id="search" name="search" type="text" class="form-control" placeholder="Enter here to search" value="<%= search %>" />
 
                                   <span class="input-group-prepend">
