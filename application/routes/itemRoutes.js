@@ -40,7 +40,7 @@ sqlRouter.post("/", parser, (req, res) => {
 	}
 
 	// print db query for debugging purposes
-	console.log(query);
+	// console.log(query);
 
 	// db query to get results
 	db.query(query, (err, result) => {
@@ -56,7 +56,7 @@ sqlRouter.post("/", parser, (req, res) => {
 		req.searchTerm = searchTerm;
 		req.type = type;
 
-		console.log(`searchTerm: ${searchTerm}, type: ${type}`);
+		// console.log(`searchTerm: ${searchTerm}, type: ${type}`);
 
 		// convert images
 		var imgblobs = [];
@@ -82,7 +82,7 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 
 	query = `SELECT * FROM item WHERE id=${req.params.id};`;
 
-	console.log(`query for single item: ${query}`);
+	// console.log(`query for single item: ${query}`);
 
 	db.query(query, (err, result) => {
 
@@ -92,7 +92,7 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 		}
 
 		req.result = result;
-		console.log(req.result);
+		// console.log(req.result);
 
 		let imgBlob = new Buffer.from(result[0].itemImage, 'binary').toString('base64');
 
