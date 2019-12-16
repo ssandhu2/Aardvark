@@ -28,6 +28,9 @@ body{
   margin-left: 20px;
 
 }
+.card-img-top{
+  height: 300px;
+}
 #result-style{
   margin-left:20px;
   margin-right:0;
@@ -109,7 +112,19 @@ hr.style-one {
 
 
 
+#log{
+  margin-top: 150px;
+  border-style:solid; 
+  border: 1px solid grey; 
+  border-radius: 10px ; 
+  width:500px;
+}
 
+#reg{
+  margin-top: 150px;
+  border-style:solid; 
+  border: 1px solid grey; 
+  border-radius: 10px ;
+  width:500px;
 
-
-
+}

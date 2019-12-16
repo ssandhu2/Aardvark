@@ -20,15 +20,14 @@ sqlRouter.get("/", (req, res) => {
 	})
 });
 
-// search bar action type is POST
+// search results
 sqlRouter.post("/", parser, (req, res) => {
 
 	// get request body form-data from index.ejs 
 	let searchTerm = req.body.search;
 	let type = req.body.type;
 
-	// search logic
-	// status=1 for approved items
+	// search query, status=1 for approved items
 	let query = "SELECT * FROM item WHERE status =1;";
 	if (searchTerm != '' && type != '') {
 		query = `SELECT * FROM item WHERE status=1 AND type="${type}" AND ( name LIKE "%${searchTerm}%" OR description LIKE "%${searchTerm}%");`
@@ -59,15 +58,14 @@ sqlRouter.post("/", parser, (req, res) => {
 
 		console.log(`searchTerm: ${searchTerm}, type: ${type}`);
 
-		// searchTerm for what was typed into the search bar
-		// type for the type selected, null if All Types
-		// searchResults is the array of items. 
+		// convert images
 		var imgblobs = [];
 		for (var i = 0; i < result.length; i++) {
-			imgblobs[i] = new Buffer(result[i].itemImage,
+			imgblobs[i] = new Buffer.from(result[i].itemImage,
 				'binary').toString('base64');
 		}
 
+		// pass data & results back to frontend
 		res.render("results", {
 			page: "home",
 			searchTerm: req.searchTerm,
@@ -98,6 +96,7 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 
 		let imgBlob = new Buffer.from(result[0].itemImage, 'binary').toString('base64');
 
+		// approved items
 		if (req.result[0].status == 1){
 			res.render("product", {
 				page: "home",
@@ -105,7 +104,7 @@ sqlRouter.get('/:id(\\d+)', parser, (req, res) => {
 				img: imgBlob,
 				loggedin: req.user
 			})
-		}
+		} // unapproved items, only for users to see their items in dashboard
 		else if (req.user){
 			if(req.result[0].status == 0 && req.user.id == req.result[0].userId){
 				res.render("product", {

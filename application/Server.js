@@ -8,12 +8,14 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 const passport = require('passport');
+const db = require('./model/db.js');
 require('./config/passport')(passport); // passport config
 const { loggedIn } = require('./model/validator.js'); // to check if user is logged in 
 
 //main server variables
 const app = express();
 const port = 80;
+
 // express session
 app.use(
   session({
@@ -27,6 +29,8 @@ app.use(
 // Passport middleware for auth
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Flash messages for login failure
 app.use(flash())
 
 // setup views folder and view engine
@@ -57,12 +61,60 @@ app.use("/contact", (req, res) => {
     });
 });
 
+random_item = (items) => {
+  return items[Math.floor(Math.random()*items.length)];
+}
+
+random_items = (items) => {
+  var selected_items = [];
+  selected_items[0]= random_item(items);
+  
+  while (selected_items.length < 7){
+    found = false;
+    random = random_item(items);
+
+    for(var i=0; i < selected_items.length; i++){
+      if(random.id === selected_items[i].id){
+        found = true;
+        break;
+      }
+    }
+    if(found === false){
+      selected_items.push(random);
+    }
+  }
+  console.log(selected_items.length)
+  return selected_items;
+}
+
 app.use("/", function (req, res) {
-  res.render("index",
+  
+  
+  let query = "SELECT * FROM item WHERE status =1;";
+  db.query(query, (err, result) => {
+		if (err) {
+			console.log(err);
+    }
+    var imgblobs = [];
+
+    var randoms = [];
+    randoms = random_items(result)
+
+    console.log(randoms)
+		for (var i = 0; i < randoms.length; i++) {
+			imgblobs[i] = new Buffer.from(randoms[i].itemImage,
+				'binary').toString('base64');
+    }
+    
+    res.render("index",
     {
       page: 'home',
-      loggedin: req.user
+      loggedin: req.user,
+      items: randoms,
+      itemImages: imgblobs
     });
+
+  });
 });
 
 app.use("*", function (req, res) {

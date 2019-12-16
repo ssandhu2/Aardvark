@@ -38,10 +38,12 @@ const passportConfig = (passport) => {
         })
       );
 
+    // login
     passport.serializeUser(function(user, done) {
         done(null, user);
     });
 
+    // logout
     passport.deserializeUser(function(id, done) {
         done(null, id);
     });

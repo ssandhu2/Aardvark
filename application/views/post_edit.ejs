@@ -31,22 +31,12 @@
         <div class="form-group row">
           <div class="form-group col">
             <label for="category">Category</label>
-
- 
-            <select name="type" id="category" class="form-control" required>
-                <option selected="selected">Select an option</option>
-                <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
-                <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-                <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
-            </select>
+            <input name="type" type="text" class="form-control" id="type" value="<%= itemCategory %>" readonly/>
           </div>
         </div>
  
         <div class="form-group-col">
           <label for="item_description">Description</label>
-          <!-- <input type="text" class="form-control" id="item_description" placeholder="Description"> -->
- 
-        
           <textarea class="form-control" rows="5" id="description" name="description"><%= itemDescription %></textarea>
         </div>
  
@@ -88,7 +78,7 @@
         </script> -->
  
         <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
-          Post
+          Edit
         </button>
       </form>
     </div>

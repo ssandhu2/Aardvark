@@ -100,6 +100,7 @@ dashboardRouter.post('/item/:id', loggedIn, parser, (req, res) => {
 });
  
 dashboardRouter.get('/delete/:id', loggedIn, (req, res) => {
+    
     let q1 = `delete from resp where message_id = ${req.params.id}`;
     let q2 = `delete from message where mess_id = ${req.params.id}`;
     console.log("IN DELETE MESSAGE " + req.params.id);
@@ -110,9 +111,6 @@ dashboardRouter.get('/delete/:id', loggedIn, (req, res) => {
             res.redirect('/dashboard');
         })
     });
- 
-    
- 
  
 });
  
