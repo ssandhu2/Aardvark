@@ -9,20 +9,30 @@
               <div class="collapse navbar-collapse" id="navbarResponsive">
                   <div>
                       <header id="search-bar" style=>
-                          <form method="post" action="searchResults">
+                          <form method="post" action="/searchResults">
                               <div class="search-inner px-3">
                                   <div class="input-group mb-2">
                                       <div class="input-group-prepend">
-                                          <select name="type">
-                                              <option value="" selected="selected">All</option>
-                                              <option value="texts" <% if(type="texts") { %>  > <% } %> Texts </option>
-                                              <option value="school supplies" <% if(type="school supplies") { %>  > <% } %> School Supplies </option>
-                                              <option value="home goods" <% if(type="home goods") { %>> <% } %> Home Goods </option>
+                                          <!-- Save previous search queries, if any -->
+                                            <% let dropdown = ["texts","school supplies","home goods"]; %>
+                                                <select name="type">
+                                            <% if (typeof type != 'undefined') { %>
+                                                <option value="" selected>All</option>
+                                            <% } else { %>
+                                                <option value="" >All</option>
+                                            <% } %>
+                                            <% for ( let i = 0; i < dropdown.length; i++) { %>
+                                                <% if (typeof type != 'undefined' && type == dropdown[i]){ %>
+                                                    <option value="<%= dropdown[i] %>" selected><%= dropdown[i] %></option>
+                                                <% } else { %>
+                                                    <option value="<%= dropdown[i] %>"><%= dropdown[i] %></option>
+                                                <% } %>
+                                            <% } %>
                                           </select>
                                       </div>
-                                      <!--Search Bar-->
-                                      <% let searchTerm = ""; %>
-                                  <input id="search" name="search" type="text" class="form-control" placeholder="Enter here to search" value="<%= searchTerm %>" />
+                                      <!-- Search Bar -->
+                                      <% let search = ""; if (typeof searchTerm != 'undefined') search = searchTerm; %>
+                                  <input id="search" name="search" type="text" class="form-control" placeholder="Enter here to search" value="<%= search %>" />
                                   <span class="input-group-prepend">
                                   <button class="btn btn-warning" style="border-radius: 3px;" type="submit">
                                       <i class="fa fa-search fa-lg" aria-hidden="true"></i>
