@@ -7,12 +7,12 @@ const { loggedIn } = require('../model/validator.js'); // to check if user is lo
 const fs = require('fs');
 const { promisify } = require('util');
 const unlinkAsync = promisify(fs.unlink);
-const multer = require('multer'); //using multer for uploading files
+const multer = require('multer'); // using multer for uploading files
 const Jimp = require('jimp');
  
-const storage = multer.diskStorage({ //allocate storage for our files
+const storage = multer.diskStorage({ // allocate storage for our files
     destination(req, file, cb) {
-        cb(null, 'uploads'); //upload the file in the uploads folder
+        cb(null, 'public/images'); // image will be deleted automatically after upload
     },
     filename(req, file, cb) {
         cb(null, `${file.fieldname}-${Date.now()}`);
