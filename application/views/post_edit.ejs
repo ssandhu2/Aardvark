@@ -1,45 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <% include layout/header %>
-
+ 
 <body>
+  <div>
     <div>
-        <div>
-            <% include layout/navbar %>
-
-        </div>
-        <br />
-        <h1>Edit Post</h1>
-        <form class="center" style="width:75%">
-            <h1><%= item_name%></h1>
-
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" value="<%= item_price%>">
-                </div>
-            </div>
-
-            <div class="form-group col">
-                <div class="form-group col">
-                    <label for="category">Category</label>
-                    <select id="category" class="form-control">
-                        <option selected><%= item_category%></option>
-                        <option>Text Books</option>
-                        <option>Home goods</option>
-                        <option>School Supplies</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <label for="item_desciption">Desciption</label>
-                <input type="text" class="form-control" id="item_desciption" value="<%= item_description%>">
-            </div>
-
-            <br />
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
+      <% include layout/navbar %>
     </div>
+    <br />
+    <div  style="margin: 4%;">
+      <h1>Edit Post</h1>
+      <form class="center" method="POST" action="/post/edit/<%= itemId%>" enctype="multipart/form-data">
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="productname">Item</label>
+ 
+            <input name="nameofitem" type="text" class="form-control" id="nameofitem"
+              value="<%= itemName %>" required/>
+          </div>
+        </div>
+ 
+        <div class="form-row">
+          <div class="form-group col">
+            <label for="price">Price</label>
+            <input name="price" type="text" class="form-control" id="price" value="<%= itemPrice %>" required/>
+          </div>
+        </div>
+ 
+ 
+        <div class="form-group row">
+          <div class="form-group col">
+            <label for="category">Category</label>
+            <input name="type" type="text" class="form-control" id="type" value="<%= itemCategory %>" readonly/>
+          </div>
+        </div>
+ 
+        <div class="form-group-col">
+          <label for="item_description">Description</label>
+          <textarea class="form-control" rows="5" id="description" name="description"><%= itemDescription %></textarea>
+        </div>
+ 
+         <br />
+        <!--upload image-->
+        <label for="item_image">Image</label>
+          <div class="row">
+            <div class="col-sm">
+        <img class="card-img-top" src="data:itemImage/jpg;base64,<%= itemImage %>" alt="<%= itemName %>" style="margin-bottom: 15px;">
+       
+      
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload New Image</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" onchange="readURL(this);" name="itemImage" class="custom-file-input" id="itemImage"
+              aria-describedby="inputGroupFileAddon01" />
+            <label class="custom-file-label" for="itemImage">Choose file</label>
+          </div>
+        </div>
+        <script>
+          function readURL(input) {
+            if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $('#uploadedImage')
+                  .attr('src', e.target.result);
+              };
+              reader.readAsDataURL(input.files[0]);
+            }
+          }
+        </script> 
+ 
+        <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+          Edit
+        </button>
+      </form>
+    </div>
+  </div>
+  <% include layout/footer %>
 </body>
+ 
 </html>
