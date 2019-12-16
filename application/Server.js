@@ -48,7 +48,7 @@ app.use('/auth', auth_routes);
 app.use('/dashboard', dash_routes);
 app.use('/post', post_routes);
 
-app.get('/logout', function (req, res) {
+app.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
@@ -61,6 +61,7 @@ app.use("/contact", (req, res) => {
     });
 });
 
+// helper functions to generate random items from database for homepage
 random_item = (items) => {
   return items[Math.floor(Math.random()*items.length)];
 }
@@ -83,13 +84,14 @@ random_items = (items) => {
       selected_items.push(random);
     }
   }
-  console.log(selected_items.length)
+  // console.log(selected_items.length)
   return selected_items;
 }
 
-app.use("/", function (req, res) {
+// homepage
+app.use("/", (req, res) => {
   
-  
+  // to get a list of items for a carousel display
   let query = "SELECT * FROM item WHERE status =1;";
   db.query(query, (err, result) => {
 		if (err) {
@@ -100,7 +102,7 @@ app.use("/", function (req, res) {
     var randoms = [];
     randoms = random_items(result)
 
-    console.log(randoms)
+    // console.log(randoms)
 		for (var i = 0; i < randoms.length; i++) {
 			imgblobs[i] = new Buffer.from(randoms[i].itemImage,
 				'binary').toString('base64');
@@ -117,10 +119,10 @@ app.use("/", function (req, res) {
   });
 });
 
-app.use("*", function (req, res) {
+app.use("*", (req, res) => {
   res.render("404.html");
 });
 
-app.listen(port, function () {
+app.listen(port, () => {
   console.log("Live at Port " + port);
 });
