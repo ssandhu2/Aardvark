@@ -23,14 +23,11 @@ git clone
 ```
 cd csc648-fall2019-Team01/application
 ```
-3. Initialize the server
+3. Initialize the server (may need root user permissions)
 ```
-npm install
+npm i
 ```
-4. Start the server
+4. Start the server (may need root user permissions)
 ```
 npm start
 ```
-
-## Note
-Currently MySQL is set to connect to root@localhost. See model/db.js.
