@@ -57,7 +57,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
         let price = req.body.price;
         let itemType = req.body.type;
         let itemD = req.body.item_description;
-        console.log(item + " " + price + " " + itemType + " " + itemD);
+        // console.log(item + " " + price + " " + itemType + " " + itemD);
  
         let itemImage;
         if (req.file) {
@@ -75,7 +75,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
                 status: '0',
                 itemImage: itemImage
             };
-            console.log(itemImage);
+            // console.log(itemImage);
             db.query("INSERT INTO item SET ?", data);
         }
         else if (req.body.type == 'school supplies') {
@@ -102,7 +102,7 @@ postRouter.post ("/", loggedIn, parser, imgUpload.single('itemImage'), (req, res
                 status: '0',
                 itemImage: itemImage
             };
-            console.log(itemImage);
+            // console.log(itemImage);
             db.query("INSERT INTO item SET ?", data);
         }
         res.redirect('/dashboard');
@@ -162,7 +162,7 @@ postRouter.post('/edit/:id(\\d+)', loggedIn, parser, imgUpload.single('itemImage
 	description = req.body.description
 	itemImage = itemImage
 
-	console.log("IN EDIT ITEM SUBMISSION ");
+	// console.log("IN EDIT ITEM SUBMISSION ");
 
 	//if the user uploads a new image 
 	if(req.file != null) {

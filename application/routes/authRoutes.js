@@ -64,7 +64,7 @@ authRouter.post('/register', validateReg(), parser, (req, res) => {
 	}
 
 	const { name, email, password, password2, phone, terms } = req.body;
-	console.log(name + ' ' + email + ' ' + password + ' ' + password2 + ' ' + phone + ' ' + terms);
+	// console.log(name + ' ' + email + ' ' + password + ' ' + password2 + ' ' + phone + ' ' + terms);
 
 	const hash = bcrypt.hashSync(password, 10); // hash password
 
