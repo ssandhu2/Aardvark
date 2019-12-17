@@ -14,7 +14,7 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 - [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/) For GUI [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/)
 
-### Instructions to Deploy
+### Instructions to Run
 1. Clone this repository
 ```
 git clone 
